@@ -1,0 +1,23 @@
+{
+  "name": "pwa-cira",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.8",
+    "autoprefixer": "^10.2.4",
+    "graphql": "^15.5.0",
+    "mongodb": "^3.6.4",
+    "next": "10.0.6",
+    "nprogress": "^0.2.0",
+    "postcss": "^8.2.4",
+    "react": "next",
+    "react-dom": "next",
+    "react-ionicons": "^4.1.0",
+    "tailwindcss": "^2.0.2"
+  }
+}
