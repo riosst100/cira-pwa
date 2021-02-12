@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from 'next/router'
 
 export default function Navbar() {
@@ -11,7 +9,6 @@ export default function Navbar() {
         <div className="relative flex items-center justify-between" style={{ height: '3rem' }}>
           <div className="flex-1 flex items-center justify-start sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center" onClick={() => router.back()}>
-              <FontAwesomeIcon className="mr-4" icon={faArrowLeft} style={{ color: 'rgba(255, 255, 255)', fontSize: '20px' }} />
             </div>
             <div className="sm:block sm:ml-6" onClick={() => router.back()}>
               <div className="flex space-x-4">
