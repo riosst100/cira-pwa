@@ -16,6 +16,20 @@ export default function Home({ users }) {
                     </div>
                 </div>
             </div>
+            <div className="section pt-1">
+                <div className="content">
+                    <div><b>Pengguna</b></div>
+                    <div>
+                        {users.map(user => {
+                            return (
+                                <div key={user._id}>
+                                    <div>~ {user.name}</div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
             <div className="footer mb-12 pb-3">
                 <div className="footer-title">
                     Copyright © Cira App 2021. All Rights Reserved.
