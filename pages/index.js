@@ -57,7 +57,7 @@ export default function Home({ users }) {
 }
 
 Home.getInitialProps = async () => {
-    const res = await fetch('http://localhost:3000/api/test');
+    const res = await fetch('/api/test');
     const { data } = await res.json();
   
     return { users: data }
