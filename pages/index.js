@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-export default function Home({ users }) {
-    console.log(users);
+export default function Home() {
   return (
     <Layout title="Cira App">
         <div id="content-container">
@@ -25,11 +24,4 @@ export default function Home({ users }) {
         </div>
     </Layout>
   )
-}
-
-Home.getInitialProps = async () => {
-    const res = await fetch('/api/test');
-    const { data } = await res.json();
-  
-    return { users: data }
 }
