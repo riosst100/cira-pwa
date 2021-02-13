@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-export default function Home() {
+export default function Home({ users }) {
   return (
     <Layout title="Cira App">
         <div id="content-container">
@@ -9,49 +9,9 @@ export default function Home() {
                 <div className="content">
                     <div className="balance">
                         <div className="left">
-                            <span className="title">Selamat Pagi, Rio Sst!</span>
-                            <h1 className="total">TEST</h1>
+                            <span className="title">Selamat Datang, Pengunjung!</span>
+                            <h5 className="total">Silahkan Daftar/Masuk ya..</h5>
                         </div>
-                        <div className="right">
-                            <a href="#" className="button" data-toggle="modal" data-target="#depositActionSheet">
-                                <ion-icon name="add-outline"></ion-icon>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="wallet-footer">
-                        <div className="item">
-                            <a href="#" data-toggle="modal" data-target="#depositActionSheet">
-                                <div className="icon-wrapper bg-danger">
-                                    <ion-icon name="arrow-down-outline"></ion-icon>
-                                </div>
-                                <strong>Admin Toko</strong>
-                            </a>
-                        </div>
-                        <div className="item">
-                            <a href="#" data-toggle="modal" data-target="#sendActionSheet">
-                                <div className="icon-wrapper">
-                                    <ion-icon name="arrow-forward-outline"></ion-icon>
-                                </div>
-                                <strong>Send</strong>
-                            </a>
-                        </div>
-                        <div className="item">
-                            <a href="app-cards.html">
-                                <div className="icon-wrapper bg-success">
-                                    <ion-icon name="card-outline"></ion-icon>
-                                </div>
-                                <strong>Partner Card</strong>
-                            </a>
-                        </div>
-                        <div className="item">
-                            <a href="#" data-toggle="modal" data-target="#sendActionSheet">
-                                <div className="icon-wrapper bg-warning">
-                                    <ion-icon name="swap-vertical"></ion-icon>
-                                </div>
-                                <strong>Exchange</strong>
-                            </a>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -61,7 +21,44 @@ export default function Home() {
                 </div>
                 Inovasi untuk kemudahan online
             </div>
+
+            {/* Data */}
+            <div className="notes-container">
+      <h1>Notes</h1>
+      <div className="grid wrapper">
+        {users.map(note => {
+          return (
+            <div key={note._id}>
+              <Card>
+                <Card.Content>
+                  <Card.Header>
+                    <Link href={`/${note._id}`}>
+                      <a>{note.title}</a>
+                    </Link>
+                  </Card.Header>
+                </Card.Content>
+                <Card.Content extra>
+                  <Link href={`/${note._id}`}>
+                    <Button primary>View</Button>
+                  </Link>
+                  <Link href={`/${note._id}/edit`}>
+                    <Button primary>Edit</Button>
+                  </Link>
+                </Card.Content>
+              </Card>
+            </div>
+          )
+        })}
+      </div>
+    </div>
         </div>
     </Layout>
   )
+}
+
+Home.getInitialProps = async () => {
+    const res = await fetch('http://localhost:3000/api/test');
+    const { data } = await res.json();
+  
+    return { users: data }
 }
