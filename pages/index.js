@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-function Home({ data }) {
+export default function Home({ users }) {
+    console.log(users);
   return (
     <Layout title="Cira App">
         <div id="content-container">
@@ -31,7 +32,7 @@ function Home({ data }) {
                 <div className="content">
                     <div><b>Pengguna</b></div>
                     <div>
-                        {data.data.map(user => {
+                        {users.map(user => {
                             return (
                                 <div key={user._id}>
                                     <div>~ {user.name}</div>
@@ -52,11 +53,9 @@ function Home({ data }) {
   )
 }
 
-export async function getServerSideProps() {
-    const res = await fetch(process.env.BASE_URL+'/api/test')
-    const data = await res.json()
+Home.getInitialProps = async () => {
+    const res = await fetch(process.env.BASE_URL+'/api/test');
+    const { data } = await res.json();
   
-    return { props: { data } }
+    return { users: data }
 }
-
-export default Home
