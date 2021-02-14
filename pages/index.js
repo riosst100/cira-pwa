@@ -1,36 +1,7 @@
-import { useState } from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout'
-import fetch from 'isomorphic-unfetch'
-import useSocket from '../hooks/useSocket'
 
 export default function Home(props) {
-    const [field, setField] = useState('')
-    const [newMessage, setNewMessage] = useState(0)
-    const [messages, setMessages] = useState(props.messages || [])
-  
-    const socket = useSocket('chat', message => {
-      setMessages(messages => [...messages, message])
-    })
-  
-    useSocket('chat', () => {
-      setNewMessage(newMessage => newMessage + 1)
-    })
-  
-    const handleSubmit = event => {
-      event.preventDefault()
-  
-      // create message object
-      const message = {
-        id: new Date().getTime(),
-        value: field,
-      }
-  
-      // send object to WS server
-      socket.emit('chat', message)
-      setField('')
-      setMessages(messages => [...messages, message])
-    }
   return (
     <Layout title="Cira App">
         <div id="content-container">

@@ -5,7 +5,6 @@
     "short_name": "Cira App",
     "scope": "/",
     "display": "browser",
-    "start_url": "https://pwa-cira.vercel.app/",
     "background_color": "#000000",
     "theme_color": "transparent",
     "description": "",
