@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { ArrowBackOutline } from 'react-ionicons'
 
 export default function Navbar() {
   const router = useRouter();
   return (
-    <nav className="bg-gray-800" style={{ backgroundColor: 'rgb(44 70 107)' }}>
+    <nav className="bg-primary">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between" style={{ height: '3rem' }}>
           <div className="flex-1 flex items-center justify-start sm:items-stretch sm:justify-start">
-            <div className="flex-shrink-0 flex items-center" onClick={() => router.back()}>
+            <div className="flex-shrink-0 flex items-center mr-2" onClick={() => router.back()}>
+              <ArrowBackOutline color="white" />
             </div>
             <div className="sm:block sm:ml-6" onClick={() => router.back()}>
               <div className="flex space-x-4">

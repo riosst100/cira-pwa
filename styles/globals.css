@@ -94,6 +94,14 @@ img {
   right: 2px;
   top: 10px;
 }
+.appBottomMenu .badge {
+  min-width: 16px;
+  height: 16px;
+  line-height: 9px !important;
+  font-size: 10px;
+  padding: 0 4px !important;
+  position: absolute;
+}
 .badge-danger, a.badge-danger {
   background: #FF396F !important;
 }
@@ -379,4 +387,7 @@ img {
 @keyframes nprogress-spinner {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: inline;
 }
