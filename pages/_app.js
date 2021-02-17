@@ -2,6 +2,7 @@ import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 import Router from 'next/router';
 import NProgress from '../components/nprogress';
+import { CookiesProvider } from "react-cookie"
 
 let timeout;
 Router.events.on('routeChangeStart', () => {
@@ -19,7 +20,11 @@ Router.events.on('routeChangeError', () => {
 });
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <CookiesProvider>
+      <Component {...pageProps} />
+    </CookiesProvider>
+  )
 }
 
 export default MyApp

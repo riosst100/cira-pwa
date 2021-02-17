@@ -4,6 +4,7 @@ import Footer from './Footer'
 
 export default function Layout(props) {
   return (
+    <div id="content-container">
       <div>
         <Head>
           <title>{props.title}</title>
@@ -17,5 +18,12 @@ export default function Layout(props) {
         </div>
         <Footer />
       </div>
+      <div className="footer mb-12 pb-3">
+        <div className="footer-title">
+          Copyright © Cira App 2021. All Rights Reserved.
+        </div>
+        Inovasi untuk kemudahan online
+      </div>
+    </div>
   )
 }

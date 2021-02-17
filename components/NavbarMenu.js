@@ -26,7 +26,7 @@ export default function NavbarMenu() {
             <span className="badge badge-danger">4</span>
         </a>
         <a href="app-settings.html" className="headerButton">
-            <img src="/img/sample/avatar/avatar6.jpg" alt="image" className="imaged w32"/>
+            <img src="/img/profile/blank.webp" alt="image" className="imaged w32"/>
             <span className="badge badge-danger">6</span>
         </a>
     </div>

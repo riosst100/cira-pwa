@@ -11,10 +11,15 @@ export default function LayoutSub(props) {
           <link rel="icon" href="https://brebes-social.id/assets/images/logo/cira.webp" />
         </Head>
         <Navbar />
-        <div style={{ background: '#edf2f7', padding: '0px' }}>
+        <div style={{ background: '#edf2f7', padding: '10px' }}>
           {props.children}
         </div>
-        <Footer />
+        <div className="footer mb-12 pb-3">
+                <div className="footer-title">
+                    Copyright © Cira App 2021. All Rights Reserved.
+                </div>
+                Inovasi untuk kemudahan online
+            </div>
       </div>
   )
 }
