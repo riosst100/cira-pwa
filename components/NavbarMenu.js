@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { ChatbubbleEllipsesOutline, MenuOutline } from 'react-ionicons'
+import { SearchOutline, CameraOutline } from 'react-ionicons'
 
 export default function NavbarMenu() {
   return (
     <div className="header bg-primary">
     <div className="left">
         <a href="#" className="headerButton" data-toggle="modal" data-target="#sidebarPanel">
-            <MenuOutline
+            <CameraOutline
             color={'#ffffff'} 
             height="30px"
             width="30px"
@@ -18,12 +18,11 @@ export default function NavbarMenu() {
     </div>
     <div className="right">
         <a href="app-notifications.html" className="headerButton">
-            <ChatbubbleEllipsesOutline
+            <SearchOutline
             color={'#ffffff'} 
             height="28px"
             width="28px"
             />
-            <span className="badge badge-danger">4</span>
         </a>
         <a href="app-settings.html" className="headerButton">
             <img src="/img/profile/blank.webp" alt="image" className="imaged w32"/>

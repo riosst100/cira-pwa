@@ -6,7 +6,7 @@ export default function BottomMenu({}) {
         <BottomMenuItem href="/" itemName="Dashboard" />
         <BottomMenuItem href="/forum" itemName="Sosial" />
         <BottomMenuItem href="/feed" itemName="Informasi" />
-        <BottomMenuItem href="/shop" itemName="Toko Online" />
+        <BottomMenuItem href="/chat" itemName="Pesan" />
         <BottomMenuItem href="/menu" itemName="Menu" />
     </div>
   )
