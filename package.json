@@ -3,16 +3,23 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "API_URL=http://localhost:3000/api next dev",
+		"dev": "next dev",
 		"build": "next build",
 		"start": "next start"
 	},
 	"dependencies": {
 		"axios": "^0.20.0",
+		"cookie-cutter": "^0.2.0",
 		"cookies": "^0.8.0",
 		"http-proxy": "^1.18.1",
+		"js-cookie": "^2.2.1",
+		"mongoose": "^5.11.18",
 		"next": "9.5.3",
+		"nookies": "^2.5.2",
 		"react": "16.13.1",
-		"react-dom": "16.13.1"
+		"react-dom": "16.13.1",
+		"react-ionicons": "^4.2.0",
+		"react-loading-skeleton": "^2.2.0",
+		"tailwindcss": "^2.0.3"
 	}
 }

@@ -1,13 +1,14 @@
-/**
- * pages/api/me.js
- *
- * A demo API endpoint for getting the currently authenticated user.
- */
-export default (req, res) => {
-	const authToken = req.headers['auth-token']
+import dbConnect from '../../utils/dbConnect';
+import User from '../../models/User';
 
-	if (authToken === '123') {
-		res.status(200).json({ email: 'admin@example.com' })
+dbConnect();
+
+export default async (req, res) => {
+	const authToken = req.headers['auth-token']
+	
+	if (authToken) {
+		const user = await User.findById(authToken);
+		res.status(200).json({ user: user })
 	} else if (!req.headers.authToken) {
 		res.status(401).json({ error: 'Authentication required' })
 	} else {

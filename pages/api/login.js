@@ -1,12 +1,18 @@
-/**
- * pages/api/login.js
- *
- * A demo API endpoint for logging in.
- */
-export default (req, res) => {
-	if (req.body.email === 'admin@example.com') {
-		res.status(200).json({ authToken: '123' })
-	} else {
-		res.status(400).json({ error: 'Invalid credentials' })
-	}
+import dbConnect from '../../utils/dbConnect';
+import User from '../../models/User';
+
+dbConnect();
+
+export default async (req, res) => {
+    const { method } = req;
+
+    try {
+        const phone = req.body.phone;
+        const password = req.body.password;
+
+        const user = await User.find({ phone: phone, password: password });
+        res.status(200).json({ authToken: user[0]._id })
+    } catch (error) {
+        res.status(400).json({ success: false });
+    }
 }

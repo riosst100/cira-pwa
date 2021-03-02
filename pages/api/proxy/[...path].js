@@ -46,6 +46,7 @@ export default (req, res) => {
 						try {
 							const { authToken } = JSON.parse(responseBody)
 							const cookies = new Cookies(req, res)
+							
 							cookies.set('auth-token', authToken, {
 								httpOnly: true,
 								sameSite: 'lax', // CSRF protection
