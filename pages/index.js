@@ -9,28 +9,41 @@ const API_URL = process.env.API_URL
 
 async function getInitialProps({ req, res }) {
 	if (!process.browser) {
-		try {
-			const Cookies = require('cookies')
+		const Cookies = require('cookies')
 			const cookies = new Cookies(req, res)
 			const authToken = cookies.get('auth-token') || ''
+
+    	const { users } = await axios
+		.get(`${API_URL}/user`)
+		.then((response) => response.data);
+		try {
 
 			const { user } = await axios
 				.get(`${API_URL}/me`, { headers: { 'auth-token': authToken } })
 				.then((response) => response.data)
 
-			return { initialLoginStatus: user.name, authToken: authToken }
+			return { initialLoginStatus: 'Selamat datang, '+user.name, authToken: authToken, users: users }
 		} catch (err) {
-			return { initialLoginStatus: 'Pengunjung', authToken: '' }
+			return { initialLoginStatus: 'Selamat datang, Pengunjung', authToken: '', users: users }
 		}
 	}
 
 	return {}
 }
 
-export default function Home({initialLoginStatus, authToken}) {
+export default function Home({initialLoginStatus, authToken, users}) {
     const [loginStatus, setLoginStatus] = useState(initialLoginStatus || <Skeleton />)
+	if (users) {
+		users = users.map(user => {
+			return (
+				<div key={user._id}>
+					<div>~ {user.name}</div>
+				</div>
+			);
+		})
+	}
+	const [usersData, setUsersData] = useState(users || <Skeleton />)
 
-	let welcomeMsg = <span>Selamat Datang, <b>{loginStatus}</b>!</span>
 	let loginRegisterComponent = <LoginRegister token={authToken} />
 
 	const [loginRegister, setLoginRegister] = useState(loginRegisterComponent || <Skeleton />)
@@ -43,9 +56,27 @@ export default function Home({initialLoginStatus, authToken}) {
 
 			setLoginRegister('')
 
-			setLoginStatus(user.name)
+			setLoginStatus('Selamat datang, '+user.name)
 		} catch (err) {
-			setLoginStatus('Pengunjung')
+			setLoginStatus('Selamat datang, Pengunjung')
+		}
+	}
+
+	async function getUsers() {
+		setUsersData(<Skeleton />)
+
+		try {
+			const { users } = await axios.get('/api/proxy/user').then((response) => response.data)
+
+			setUsersData(users.map(user => {
+				return (
+					<div key={user._id}>
+						<div>~ {user.name}</div>
+					</div>
+				);
+			}))
+		} catch (err) {
+			setUsersData('')
 		}
 	}
 
@@ -54,14 +85,22 @@ export default function Home({initialLoginStatus, authToken}) {
 			getLoginStatus()
 		}
 	}, [initialLoginStatus])
+
+	useEffect(() => {
+		if (!users) {
+			getUsers()
+		}
+	}, [users])
+
     return (
     <Layout title="Cira App">
         <div className="section content-section pt-1">
             <div className="content">
                 <div className="balance">
-                    <div className="left">
-                        <span className="title">{welcomeMsg}</span>
-                        <h5 className="total">Silahkan Daftar/Masuk ya..</h5>
+                    <div className="left mt-2">
+                        <span className="title">{loginStatus}</span>
+                        <h5 className="total">Cira App - Inovasi Kemudahan Online..</h5>
+						<h6>Banjarharjo | Brebes</h6>
                     </div>
                 </div>
             </div>
@@ -70,6 +109,9 @@ export default function Home({initialLoginStatus, authToken}) {
         <div className="section pt-1">
             <div className="content">
                 <div><b>Pengguna</b></div>
+				<div>
+                    {usersData}
+                </div>
             </div>
         </div>
     </Layout>
