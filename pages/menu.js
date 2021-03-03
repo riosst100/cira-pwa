@@ -1,31 +1,31 @@
-import Link from 'next/link'
 import Layout from '../components/Layout'
-import { parseCookies } from "../helpers/parseCookies"
-import { useRouter } from 'next/router'
-import { useCookies } from "react-cookie";
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
-export default function Menu(props) {
-    const [cookie, removeCookie] = useCookies(["cira_userid"])
-    const router = useRouter()
-    const current_user = props.current_user
-    let name = "Pengunjung"
-    if (current_user) {
-        name = current_user.name
-    }
-    const logOut = (e) => {
-        e.preventDefault()
+const API_URL = process.env.API_URL
 
-        removeCookie("cira_userid");
+export default function Menu({initialLoginStatus}) {
+    const [loginStatus, setLoginStatus] = useState(initialLoginStatus || 'Loading...')
 
-        router.push('/')
-    }
+    async function getLoginStatus() {
+		setLoginStatus('Loading...')
+
+		try {
+			const { user } = await axios.get('/api/proxy/me').then((response) => response.data)
+
+			setLoginStatus(`Logged in as ${user.name}`)
+		} catch (err) {
+			setLoginStatus('Not logged in')
+		}
+	}
+
     return (
         <Layout title="Cira App">
             <div className="section content-section pt-1">
                 <div className="content">
                     <div className="balance">
                         <div className="left">
-                            <span className="title"><b>{name}</b>!</span>
+                            <span className="title"><b>{loginStatus}</b>!</span>
                         </div>
                     </div>
                 </div>
@@ -33,9 +33,9 @@ export default function Menu(props) {
             <div className="section pt-1">
                 <div className="content">
                     <div>
-                        <button onClick={logOut}>
+                        <a href="/logout">
                             Keluar
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -43,12 +43,22 @@ export default function Menu(props) {
     )
 }
 
-Menu.getInitialProps = async ({ req }) => {
-    const cookie = parseCookies(req)
-    const userid = cookie.cira_userid;
+Menu.getInitialProps = async ({ req, res }) => {
+	if (!process.browser) {
+		try {
+			const Cookies = require('cookies')
+			const cookies = new Cookies(req, res)
+			const authToken = cookies.get('auth-token') || ''
 
-    const res2 = await fetch(process.env.BASE_URL+'/api/user/'+userid);
-    const { user } = await res2.json()
+			const { user } = await axios
+				.get(`${API_URL}/me`, { headers: { 'auth-token': authToken } })
+				.then((response) => response.data)
 
-    return { current_user: user }
+			return { initialLoginStatus: user.name }
+		} catch (err) {
+			return { initialLoginStatus: 'Pengunjung' }
+		}
+	}
+
+	return { initialLoginStatus: null}
 }
