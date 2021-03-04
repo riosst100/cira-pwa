@@ -1,42 +1,36 @@
 import Link from 'next/link'
 import Layout from '../../components/LayoutSub'
 import { useRouter } from 'next/router'
-import { useCookies } from "react-cookie"
+import axios from 'axios'
+
+const API_URL = process.env.API_URL
 
 export default function RegisterMember() {
     const router = useRouter()
-    const [cookie, setCookie] = useCookies(["cira_userid"])
-    const registerMember = async event => {
-        event.preventDefault()
+    
+    async function registerMember(e) {
+		e.preventDefault()
 
-        const res = await fetch(process.env.BASE_URL+'/api/user/', 
-            {
-                body: JSON.stringify({
-                    name: event.target.name.value,
-                    call_name: event.target.call_name.value,
-                    birthdate: event.target.birthdate.value,
-                    phone: event.target.phone.value,
-                    password: event.target.password.value
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                method: 'POST'
-            }
-        )
-      
-        const result = await res.json()
+        const name = e.target.querySelector('[name="name"]').value
+        const call_name = e.target.querySelector('[name="call_name"]').value
+		const birthdate = e.target.querySelector('[name="birthdate"]').value
+		const phone = e.target.querySelector('[name="phone"]').value
+		const password = e.target.querySelector('[name="password"]').value
 
-        if (result) {
-            setCookie("cira_userid", result.data._id, {
-                path: "/",
-                maxAge: 2147483647,
-                sameSite: true,
+		try {
+			await axios.post('/api/proxy/user/register', { 
+                name, 
+                call_name,
+                birthdate,
+                phone,
+                password
             })
+		} catch (err) {
+			console.error('Request failed:' + err.message)
+		}
 
-            router.push('/')
-        }
-    }
+        router.push('/')
+	}
 
     return (
         <Layout title="Cira App">

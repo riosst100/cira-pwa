@@ -13,7 +13,7 @@ export default function Layout(props) {
           <link rel="manifest" href="/manifest.json"></link>
         </Head>
         <Navbar />
-        <div style={{ background: '#edf2f7', padding: '0px' }}>
+        <div style={{ background: 'rgb(237 237 245)', padding: '0px' }}>
           {props.children}
         </div>
         <Footer />

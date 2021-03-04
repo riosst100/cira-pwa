@@ -17,7 +17,7 @@ export const config = {
 export default (req, res) => {
 	return new Promise((resolve, reject) => {
 		const pathname = url.parse(req.url).pathname
-		const isLogin = pathname === '/api/proxy/user/login'
+		const isLogin = pathname === '/api/proxy/user/login' || pathname === '/api/proxy/user/register'
 
 		const cookies = new Cookies(req, res)
 		const authToken = cookies.get('auth-token')

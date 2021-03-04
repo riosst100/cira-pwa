@@ -7,13 +7,13 @@ export default async (req, res) => {
     const { method } = req;
 
     switch (method) {
-        case 'GET':
+        case 'POST':
             try {
-                const user = await User.find({});
-
-                res.status(200).json({ users: user })
+                const user = await User.create(req.body);
+                res.status(201).json({ authToken: user._id })
             } catch (error) {
-                res.status(400).json({ users: '' });
+                console.log(error)
+                res.status(400).json({ authToken: '' });
             }
             break;
         default:
