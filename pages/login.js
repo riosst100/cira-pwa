@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Layout from '../components/LayoutSub'
+import NProgress from '../components/nprogress';
 
 const API_URL = process.env.API_URL
 
@@ -10,6 +11,8 @@ export default function Login() {
 
 	async function onSubmit(e) {
 		e.preventDefault()
+
+		NProgress.start()
 
 		const phone = e.target.querySelector('[name="phone"]').value
 		const password = e.target.querySelector('[name="password"]').value

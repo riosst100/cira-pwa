@@ -1,11 +1,13 @@
-import Head from 'next/head'
 import dynamic from 'next/dynamic'
+import Layout from '../../../components/LayoutSubInfinity'
 
 const ChatComponent = dynamic(() => import('../../../components/AblyChatComponent'), { ssr: false });
 
 export default function Home() {
   return (
-    <div className="container">
+    
+    <Layout title="Cira App">
+      <div className="container">
         <ChatComponent />
 
       <style jsx>{`
@@ -34,5 +36,7 @@ export default function Home() {
         
       `}</style>
     </div>
+    </Layout>
+    
   )
 }

@@ -10,8 +10,8 @@ export default async (req, res) => {
 		const user = await User.findById(authToken);
 		res.status(200).json({ user: user })
 	} else if (!req.headers.authToken) {
-		res.status(401).json({ error: 'Authentication required' })
+		res.status(200).json({ error: 'Authentication required' })
 	} else {
-		res.status(403).json({ error: 'Not permitted' })
+		res.status(200).json({ error: 'Not permitted' })
 	}
 }

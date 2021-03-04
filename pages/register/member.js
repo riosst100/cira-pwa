@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Layout from '../../components/LayoutSub'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import NProgress from '../../components/nprogress';
 
 const API_URL = process.env.API_URL
 
@@ -10,6 +11,8 @@ export default function RegisterMember() {
     
     async function registerMember(e) {
 		e.preventDefault()
+
+        NProgress.start()
 
         const name = e.target.querySelector('[name="name"]').value
         const call_name = e.target.querySelector('[name="call_name"]').value

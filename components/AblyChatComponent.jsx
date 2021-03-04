@@ -51,133 +51,36 @@ const AblyChatComponent = () => {
         <div ref={(element) => { messageEnd = element; }}></div>
       </div>
       <form onSubmit={handleFormSubmission} className={styles.form}>
-        <textarea
-          ref={(element) => { inputBox = element; }}
+      <div className="fixed w-full flex justify-between bg-green-100" style={{"bottom": "0px"}}>
+      <textarea
+        className="flex-grow m-2 py-2 px-4 mr-1 rounded-full border border-gray-300 bg-gray-200 resize-none"
+        ref={(element) => { inputBox = element; }}
           value={messageText}
           placeholder="Ketik pesan..."
           onChange={e => setMessageText(e.target.value)}
           onKeyPress={handleKeyPress}
-          className={styles.textarea}
           rows="1"
-        ></textarea>
-        <button type="submit" className={styles.button} disabled={messageTextIsEmpty}>Kirim</button>
-      </form>
-      <form onSubmit={handleFormSubmission} style={
-        { 
-          "backgroundColor": "white",
-          "position": "fixed",
-          "bottom": 0,
-          "right": 0,
-          "left": 0,
-          "zIndex": 1030,
-          "width": "100%"
-        }
-      }>
-        <div className="form-group p-0 mb-0" style={
-          {
-            "backgroundColor": "#7cbdcb"
-          }
-        }>
-          <table style={{"width": "100%"}}>
-            <tbody>
-              <tr>
-                <td className="pl-1 pb-1 pt-1" style={
-                  { 
-                    "width": "100%",
-                    "textAlign": "center"
-                  }
-                } colSpan="4">
-                  <div className="input-group mr-1">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="show_emoticon_btn" style={
-                          { 
-                            "borderBottomLeftRadius": "20px",
-                            "borderTopLeftRadius": "20px",
-                            "backgroundColor": "white",
-                            "border": "1px solid #65b3d8",
-                            "paddingRight": 0
-                          }
-                        }>
-                        <i className="far fa-grin" style={
-                          {   
-                            "fontSize":"25px","color":"grey","margin": 0
-                          }
-                        }></i>
-                      </span>
-                      <span className="input-group-text" id="hide_emoticon_btn" style={
-                          { 
-                            "borderBottomLeftRadius": "20px",
-                            "borderTopLeftRadius": "20px",
-                            "backgroundColor": "white",
-                            "border": "1px solid #65b3d8v",
-                            "paddingRight": 0,
-                            "display": "none"
-                          }
-                        }>
-                        <i className="far fa-grin" style={
-                          { 
-                            "fontSize":"25px","color":"#12b2ff"
-                          }
-                        }></i>
-                      </span>
-                    </div>
-                    <textarea rows="1" className="form-control" id="message" placeholder="Ketik pesan.." style={
-                          { 
-                            "fontSize": "16px !important",
-                            "padding": "9px",
-                            "border": "1px solid #65b3d8",
-                            "borderLeft": "none !important",
-                            "borderRight": "none !important"
-                          }
-                        }></textarea>
-                    <div className="input-group-append">
-                      <span className="input-group-text" id="show_emoticon_btn" style={
-                          { 
-                            "borderBottomRightRadius": "20px",
-                            "borderTopRightRadius": "20px",
-                            "backgroundColor": "white",
-                            "border": "1px solid #65b3d8",
-                            "borderLeft":"none",
-                            "paddingRight": "15px"
-                          }
-                        }>
-                        <i className="fas fa-paperclip" style={
-                          { 
-                            "fontSize":"20px","color":"grey","margin": 0
-                          }
-                        }></i>
-                      </span>
-                    </div>
-                  </div>
-                </td>
-                <td style={
-                  {
-                    "width": "22%",
-                    "textAlign": "right"
-                  }
-                } className="pb-1">
-                  <div className="btn btn-primary mr-1" style={
-                          { 
-                            "border": "1px solid #65b3d8",
-                            "width": "45px",
-                            "height": "45px",
-                            "padding": "7px 10px",
-                            "borderRadius": "25px",
-                            "textAlign": "center"
-                          }
-                        }>
-                    <img src="/img/icon/send_chat.webp" style={
-                      { 
-                        "width":"20px","marginLeft":"4px","marginTop": "7px"
-                      }
-                    } />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </form>
+        style={{"outline": "none"}}
+      ></textarea>
+      <button disabled={messageTextIsEmpty} type="submit" className="m-2" style={{"outline": "none"}}>
+        <svg
+          className="svg-inline--fa text-green-400 fa-paper-plane fa-w-16 w-12 h-12 py-2 mr-2"
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="paper-plane"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
+          />
+        </svg>
+      </button>
+    </div>
+    </form>
     </div>
   )
 }
