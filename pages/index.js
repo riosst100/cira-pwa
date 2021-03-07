@@ -1,83 +1,59 @@
-import Head from 'next/head'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import styles from '../styles/Home.module.css'
+import Layout from '../components/Layout'
 
 export default function Home({ launches }) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          SpaceX Launches
-        </h1>
-
-        <p className={styles.description}>
-          <a href="https://www.spacex.com/launches/">Latest launches</a> from SpaceX
-        </p>
-
-        <div className={styles.grid}>
-          {launches.map(launch => {
+    <Layout title="Cira App">
+        <div className="section content-section pt-1">
+            <div className="content">
+                <div className="balance p-2">
+                    <div className="left">
+                        <span className="title"><b>
+                          {/* {loginStatus} */}
+                          </b></span>
+                        <h5 className="total">Cira App - Inovasi Kemudahan Online..</h5>
+						<h6>Banjarharjo | Brebes</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/* {loginRegister} */}
+        <div className="section mt-3">
+            <div className="content">
+                <div><b>Pengguna</b></div>
+        {launches.map(user => {
             return (
-              <a key={launch.id} href={launch.links.video_link} className={styles.card}>
-                <h3>{ launch.mission_name }</h3>
-                <p><strong>Launch Date:</strong> { new Date(launch.launch_date_local).toLocaleDateString("en-US") }</p>
-              </a>
+              <div key={user.id}>
+                { user.name }
+              </div>
             );
           })}
+            </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    </Layout>
   )
 }
 
 export async function getStaticProps() {
   const client = new ApolloClient({
-    uri: 'https://api.spacex.land/graphql/',
+    uri: 'https://brebes-social.id/public/graphql',
     cache: new InMemoryCache()
   });
 
   const { data } = await client.query({
     query: gql`
-      query GetLaunches {
-        launchesPast(limit: 10) {
-          id
-          mission_name
-          launch_date_local
-          launch_site {
-            site_name_long
-          }
-          links {
-            article_link
-            video_link
-            mission_patch
-          }
-          rocket {
-            rocket_name
-          }
-        }
+    query getAllUser {
+      users {
+        id
+        name
       }
-
+    }
     `
   });
 
   return {
     props: {
-      launches: data.launchesPast
+      launches: data.users
     }
   }
 }
