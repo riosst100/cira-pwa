@@ -36,7 +36,7 @@ export default function Home({ launches }) {
 
 export async function getStaticProps() {
   const client = new ApolloClient({
-    uri: 'https://brebes-social.id/public/graphql',
+    uri: process.env.SERVER_GRAPHQL_URL,
     cache: new InMemoryCache()
   });
 
