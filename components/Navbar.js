@@ -22,7 +22,7 @@ export default function Navbar() {
             <div className="ml-3 relative">
               <div>
                 <button className="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
-                  <img className="block lg:hidden h-8 w-auto mr-5" src="https://brebes-social.id/assets/images/logo/ciracira_trans.webp" alt="Workflow" />
+                  <img className="block lg:hidden h-8 w-auto mr-5" src="/img/logo/ciracira_trans.webp"/>
                 </button>
               </div>
             </div>

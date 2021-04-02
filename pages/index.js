@@ -1,5 +1,6 @@
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import Layout from '../components/Layout'
+import LoginRegister from '../components/LoginRegister'
 
 export default function Home({ launches }) {
   return (
@@ -17,7 +18,7 @@ export default function Home({ launches }) {
                 </div>
             </div>
         </div>
-        {/* {loginRegister} */}
+        <LoginRegister />
         <div className="section mt-3">
             <div className="content">
                 <div><b>Pengguna</b></div>

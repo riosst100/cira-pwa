@@ -32,7 +32,7 @@ export default function RegisterMember() {
         <Layout title="Cira App">
             <div className="flex items-center justify-center">
             <form onSubmit={registerMember} className="w-full bg-white shadow-md rounded px-5 pt-6 pb-8">
-                <div className="text-center"><img className="mx-auto" src="https://brebes-social.id/assets/images/logo/cira-blue.png" style={{ width: '70px' }} /></div>
+                <div className="text-center"><img className="mx-auto" src="/img/logo/cira_trans_colored.webp" style={{ width: '70px' }} /></div>
                 <h1 className="mt-2 block text-gray-700 font-bold mb-2 text-xl text-center">Daftar jadi member Cira</h1>
                 <br/>
                 <div className="mb-4">

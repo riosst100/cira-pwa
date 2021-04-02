@@ -387,7 +387,7 @@ img {
   100% { transform: rotate(360deg); }
 }
 img, svg, video, canvas, audio, iframe, embed, object {
-  display: inline;
+  display: inline !important;
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
