@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { LogoNodejs, MenuOutline, GridOutline, GlobeOutline, PeopleOutline, StorefrontOutline, HelpOutline } from 'react-ionicons'
+import { MenuOutline, GridOutline, ChatboxEllipsesOutline, PeopleOutline, EarthOutline, HelpOutline } from 'react-ionicons'
 
 export default function BottomMenuItem({ href, itemName }) {
     const router = useRouter()
@@ -18,11 +18,11 @@ export default function BottomMenuItem({ href, itemName }) {
     }
 
     if (href === '/feed') {
-        icon = <GlobeOutline color={iconColor} />
+        icon = <EarthOutline color={iconColor} />
     }
 
-    if (href === '/shop') {
-        icon = <StorefrontOutline color={iconColor} />
+    if (href === '/chat') {
+        icon = <ChatboxEllipsesOutline color={iconColor} />
     }
 
     if (href === '/menu') {
