@@ -53,7 +53,7 @@ export default function RegisterMember() {
 			console.error('Request failed:' + err.message)
 		}
 
-        // router.push('/')
+        router.push('/')
 	}
 
     return (
