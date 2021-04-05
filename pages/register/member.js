@@ -2,56 +2,44 @@ import Link from 'next/link'
 import Layout from '../../components/LayoutSub'
 import { useRouter } from 'next/router'
 import NProgress from '../../components/nprogress';
-import { gql } from 'graphql-request';
-import { graphQLClient } from '../../utils/graphql-client';
+import { useState } from "react";
+import { gql, useMutation } from "@apollo/client";
+import withApollo from "../../lib/apollo";
 
 const API_URL = process.env.API_URL
+const CREATE_USER = gql`mutation createNewUser($phone: String!, $password: String!, $full_name: String!, $call_name: String!, $birth_date: String!) { userSave(phone: $phone, password: $password, name: $full_name, call_name: $call_name, birth_date: $birth_date) { id } }`;
 
-export default function RegisterMember() {
+const RegisterMember = props => {
     const router = useRouter()
+    const [full_name, setFullName] = useState("");
+    const [call_name, setCallName] = useState("");
+    const [birth_date, setBirthDate] = useState("");
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+    const [createUser, { error, data }] = useMutation(CREATE_USER, {
+        variables: { phone, password, full_name, call_name, birth_date },
+        update: (proxy, mutationResult) => {
+        //   const { allPosts } = proxy.readQuery({
+        //     query: GET_POSTS,
+        //     variables: { first: 10, skip: 0 }
+        //   });
+          const newPost = mutationResult.data.createUser;
+        //   proxy.writeQuery({
+        //     query: GET_POSTS,
+        //     variables: { first: 10, skip: 0 },
+        //     data: {
+        //       allPosts: [newPost, ...allPosts]
+        //     }
+        //   });
+        }
+      });
     
-    async function registerMember(e) {
+    async function handleSubmit(e) {
 		e.preventDefault()
 
         NProgress.start()
 
-        const name = e.target.querySelector('[name="name"]').value
-        const call_name = e.target.querySelector('[name="call_name"]').value
-		const birthdate = e.target.querySelector('[name="birthdate"]').value
-		const phone = e.target.querySelector('[name="phone"]').value
-		const password = e.target.querySelector('[name="password"]').value
-
-        const query = gql`
-        mutation createNewUser(
-            $phone: String,
-            $password: String,
-            $name: String,
-            $call_name: String,
-            $gender: String,
-            $birth_date: String,
-            $ip: String,
-            $user_agent: String
-        ) {
-            userSave(
-                phone: $phone,
-                password: $password,
-                name: $name,
-                call_name: $call_name,
-                gender: $gender,
-                birth_date: $birth_date,
-                ip: $ip,
-                user_agent: $user_agent
-            ) {
-                id
-            }
-        }
-        `;
-
-		try {
-            await graphQLClient.request(query, { name, call_name, birthdate, phone, password });
-		} catch (err) {
-			console.error('Request failed:' + err.message)
-		}
+        createUser();
 
         router.push('/')
 	}
@@ -59,7 +47,7 @@ export default function RegisterMember() {
     return (
         <Layout title="Cira App">
             <div className="flex items-center justify-center">
-            <form onSubmit={registerMember} className="w-full bg-white shadow-md rounded px-5 pt-6 pb-8">
+            <form onSubmit={handleSubmit} className="w-full bg-white shadow-md rounded px-5 pt-6 pb-8">
                 <div className="text-center"><img className="mx-auto" src="/img/logo/cira_trans_colored.webp" style={{ width: '70px' }} /></div>
                 <h1 className="mt-2 block text-gray-700 font-bold mb-2 text-xl text-center">Daftar jadi member Cira</h1>
                 <br/>
@@ -69,7 +57,7 @@ export default function RegisterMember() {
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="name" id="name" type="text" required/>
+                        name="full_name" id="full_name" onChange={e => setFullName(e.target.value)} type="text" required/>
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -77,7 +65,7 @@ export default function RegisterMember() {
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="call_name" id="call_name" type="text" required/>
+                        name="call_name" id="call_name" onChange={e => setCallName(e.target.value)} type="text" required/>
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -85,7 +73,7 @@ export default function RegisterMember() {
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="birthdate" id="birthdate" type="date" placeholder="Ingresa tu Fecha de Nacimiento" required/>
+                        name="birthdate" id="birthdate" onChange={e => setBirthDate(e.target.value)} type="date" placeholder="Ingresa tu Fecha de Nacimiento" required/>
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -93,7 +81,7 @@ export default function RegisterMember() {
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="phone" id="phone" type="number" required/>
+                        name="phone" id="phone" onChange={e => setPhone(e.target.value)} type="number" required/>
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -102,7 +90,7 @@ export default function RegisterMember() {
                     <div>Tentukan password untuk akun member kamu.</div>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="password" id="password" type="password" required/>
+                        name="password" id="password" onChange={e => setPassword(e.target.value)} type="password" required/>
                 </div>
                 <div className="flex items-center justify-between">
                     <button id="submit"
@@ -118,3 +106,5 @@ export default function RegisterMember() {
         </Layout>
     )
 }
+
+export default withApollo({ ssr: true })(RegisterMember);
