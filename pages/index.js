@@ -7,20 +7,9 @@ const Home = props => {
   return (
     <Layout title="Cira App">
         <div className="section content-section pt-1">
-            <div className="content">
-                <div className="balance p-2">
-                    <div className="left">
-                        <span className="title"><b>
-                          {/* {loginStatus} */}
-                          </b></span>
-                        <h5 className="total">Cira App - Inovasi Kemudahan Online..</h5>
-						<h6>Banjarharjo | Brebes</h6>
-                    </div>
-                </div>
-            </div>
+          <img className="content" style={{ 'padding': '0px !important' }} src="http://brebes-social.id/public/images/banner/banner-cira.png"/>
         </div>
         <LoginRegister />
-        <UserList />
     </Layout>
   )
 }

@@ -14,7 +14,7 @@ export default function NavbarMenu() {
         </a>
     </div>
     <div className="pageTitle">
-        <img src="/img/cira-app.png" alt="logo" className="logo"/>
+        <img src="https://brebes-social.id/public/images/logo/cira-text.png" alt="logo" className="logo"/>
     </div>
     <div className="right">
         <a href="app-notifications.html" className="headerButton">

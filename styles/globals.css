@@ -12,7 +12,7 @@ body {
   font-weight: 400;
 }
 .header {
-  height: 56px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ body {
   top: 0;
 }
 .header .left, .header .right {
-  height: 56px;
+  height: 50px;
   display: flex;
   align-items: center;
   position: absolute;
@@ -46,7 +46,7 @@ body {
 }
 .header .left .headerButton, .header .right .headerButton {
   min-width: 36px;
-  height: 56px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,10 +135,10 @@ img {
   box-sizing: border-box;
 }
 #content-container {
-  padding: 56px 0;
+  padding: 50px 0;
 }
 .appBottomMenu {
-  height: 56px;
+  height: 50px;
   position: fixed;
   z-index: 999;
   bottom: 0;
