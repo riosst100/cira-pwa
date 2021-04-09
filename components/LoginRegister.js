@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function LoginRegister({token}) {
   let loginRegisterElement = (
-    <div className="section mt-4">
+    <div className="section mt-3">
       <div className="content text-center">
         <div><b>Selamat Datang di Cira App!</b></div>
         <div className="pb-2"><small>Silahkan Daftar atau Masuk jika sudah terdaftar.</small></div>
