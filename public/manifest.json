@@ -13,8 +13,8 @@
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "https://brebes-social.id/assets/images/logo/cira.webp",
-            "type": "image/webp",
+            "src": "https://brebes-social.id/assets/images/logo/cira.png",
+            "type": "image/png",
             "sizes": "512x512"
         }
     ],

@@ -1,4 +1,4 @@
-import BottomMenu from '../components/BottomMenu'
+import BottomMenu from '../components/bottomMenu'
 
 export default function Footer() {
   return (

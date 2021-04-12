@@ -1,4 +1,4 @@
-import BottomMenuItem from '../components/BottomMenuItem'
+import BottomMenuItem from '../components/bottomMenuItem'
 
 export default function BottomMenu({}) {
   return (
