@@ -9,7 +9,7 @@ const IndexPage = () => {
   return (
     <Layout title="Cira App">
       <div className="section content-section pt-1">
-        <img className="home-banner" src="http://brebes-social.id/public/images/banner/banner-cira.png"/>
+        <img className="home-banner" src="https://brebes-social.id/public/images/banner/banner-cira.png"/>
       </div>
       <LoginRegister user={user} />
     </Layout>
