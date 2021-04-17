@@ -1,24 +1,14 @@
 import React from 'react';
-import '../styles/cira.css'
-import 'tailwindcss/tailwind.css'
-import Router from 'next/router';
-import NProgress from '../components/nprogress';
-
-let timeout;
-Router.events.on('routeChangeStart', () => {
-  timeout = setTimeout(() => {
-    NProgress.start()
-  }, 100);
-});
-Router.events.on('routeChangeComplete', () => {
-  clearTimeout(timeout);
-  NProgress.done()
-}); 
-Router.events.on('routeChangeError', () => {
-  clearTimeout(timeout);
-  NProgress.done()
-});
+import Head from 'next/head';
+import Layout from '@/components/layout';
 
 export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <Layout>
+      <Head>
+        <title>Next.js + MongoDB App</title>
+      </Head>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }

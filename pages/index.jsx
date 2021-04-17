@@ -1,18 +1,43 @@
 import React from 'react';
 import { useCurrentUser } from '@/hooks/index';
-import Layout from '@/components/layout'
-import LoginRegister from '@/components/loginRegister'
+import PostEditor from '@/components/post/editor';
+import Posts from '@/components/post/posts';
 
 const IndexPage = () => {
   const [user] = useCurrentUser();
 
   return (
-    <Layout title="Cira App">
-      <div className="section content-section pt-1">
-        <img className="home-banner" src="https://brebes-social.id/public/images/banner/banner-cira.png"/>
+    <>
+      <style jsx>
+        {`
+          p {
+            text-align: center;
+            color: #888;
+          }
+          h3 {
+            color: #555;
+          }
+        `}
+      </style>
+      <div style={{ marginBottom: '2rem' }}>
+        <h2>
+          Hello,
+          {' '}
+          {user ? user.name : 'stranger'}
+          !
+        </h2>
+        <p>Have a wonderful day.</p>
       </div>
-      <LoginRegister user={user} />
-    </Layout>
+      <div>
+        <h3>
+          All posts from the Web
+          {' '}
+          <span role="img" aria-label="Earth">🌎</span>
+        </h3>
+        <PostEditor />
+        <Posts />
+      </div>
+    </>
   );
 };
 

@@ -21,7 +21,6 @@
   "homepage": "https://github.com/hoangvvo/nextjs-mongodb-app#readme",
   "dependencies": {
     "@sendgrid/mail": "^7.4.0",
-    "autoprefixer": "^10.2.5",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.23.0",
     "connect-mongo": "^3.2.0",
@@ -32,16 +31,11 @@
     "nanoid": "^3.1.18",
     "next": "^10.0.3",
     "next-connect": "^0.9.1",
-    "nprogress": "^0.2.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "postcss": "^8.2.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-ionicons": "^4.2.0",
-    "styled-components": "^5.2.3",
     "swr": "^0.3.9",
-    "tailwindcss": "^2.1.1",
     "validator": "^13.1.17"
   },
   "devDependencies": {
