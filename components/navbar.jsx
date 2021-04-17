@@ -10,8 +10,8 @@ export default function Navbar({ title }) {
         <div className="headerButton" onClick={() => router.back()}>
             <ArrowBackOutline
             color={'#ffffff'} 
-            height="30px"
-            width="30px"
+            height="25px"
+            width="25px"
             />
         </div>
     </div>
@@ -19,7 +19,7 @@ export default function Navbar({ title }) {
         {title}
     </div>
     <div className="right">
-    <img onClick={() => router.push('/')} className="block lg:hidden h-8 w-auto mr-1" src="https://brebes-social.id/public/images/logo/cira-white-transparent.png"/>
+    <img onClick={() => router.push('/')} className="block lg:hidden h-7 w-auto mr-1" src="https://brebes-social.id/public/images/logo/cira-white-transparent.png"/>
     </div>
 </div>
   )

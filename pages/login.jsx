@@ -3,6 +3,7 @@ import Layout from '@/components/layoutSub'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCurrentUser } from '@/hooks/index';
+import NProgress from '@/components/nprogress';
 
 const LoginPage = () => {
   const router = useRouter();
@@ -15,6 +16,10 @@ const LoginPage = () => {
 
   async function onSubmit(e) {
     e.preventDefault();
+
+    // Start progress bar
+    NProgress.start();
+
     const body = {
       email: e.currentTarget.phone.value,
       password: e.currentTarget.password.value,

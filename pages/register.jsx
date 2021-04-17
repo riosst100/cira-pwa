@@ -3,6 +3,7 @@ import Layout from '@/components/layoutSub'
 import Router from 'next/router';
 import { useCurrentUser } from '@/hooks/index';
 import Link from 'next/link'
+import NProgress from '@/components/nprogress';
 
 const SignupPage = () => {
   const [user, { mutate }] = useCurrentUser();
@@ -14,6 +15,10 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Start progress bar
+    NProgress.start()
+
     const body = {
       email: e.currentTarget.email.value,
       name: e.currentTarget.name.value,
