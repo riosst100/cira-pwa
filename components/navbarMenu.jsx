@@ -23,7 +23,7 @@ export default function NavbarMenu({ user }) {
                     <a href="app-settings.html" className="headerButton">
                         <img style={{ 
                           'width': '30px', 
-                          'marginTop': '5px', 
+                          'marginTop': '0px', 
                           'marginLeft': '5px'
                           }} src="https://brebes-social.id/public/images/profile/blank.webp" alt="image" className="imaged" />
                         <span className="badge badge-danger">6</span>
