@@ -24,7 +24,7 @@ export default function NavbarMenu({ user }) {
                         <img style={{ 
                           'width': '30px', 
                           'marginTop': '0px', 
-                          'marginLeft': '5px'
+                          'marginLeft': '7px'
                           }} src="https://brebes-social.id/public/images/profile/blank.webp" alt="image" className="imaged" />
                         <span className="badge badge-danger">6</span>
                     </a>
