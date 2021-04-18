@@ -2,6 +2,7 @@ import React from 'react';
 import { useCurrentUser } from '@/hooks/index';
 import Layout from '@/components/layout'
 import LoginRegister from '@/components/loginRegister'
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const IndexPage = () => {
   const [user] = useCurrentUser();

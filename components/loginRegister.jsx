@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export default function LoginRegister({ user }) {
     return (

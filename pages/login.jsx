@@ -21,7 +21,7 @@ const LoginPage = () => {
     NProgress.start();
 
     const body = {
-      email: e.currentTarget.phone.value,
+      phone: e.currentTarget.phone.value,
       password: e.currentTarget.password.value,
     };
     const res = await fetch('/api/auth', {
@@ -33,6 +33,8 @@ const LoginPage = () => {
       const userObj = await res.json();
       mutate(userObj);
     } else {
+      NProgress.done();
+
       setErrorMsg('Incorrect username or password. Try again!');
     }
   }
@@ -47,7 +49,7 @@ const LoginPage = () => {
         <div>{errorMsg ? <p style={{ color: 'red' }}>{errorMsg}</p> : null}</div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Email
+            Nomor HP
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

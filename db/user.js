@@ -7,10 +7,10 @@ export async function findUserById(db, userId) {
   }).then((user) => user || null);
 }
 
-export async function findUserByEmail(db, email) {
-  email = normalizeEmail(email);
+export async function findUserByPhone(db, phone) {
+  // email = normalizeEmail(email);
   return db.collection('users').findOne({
-    email,
+    phone,
   }).then((user) => user || null);
 }
 
@@ -23,18 +23,17 @@ export async function updateUserById(db, id, update) {
 }
 
 export async function insertUser(db, {
-  email, password, bio = '', name, profilePicture,
+  phone, password, call_name, name, birthdate,
 }) {
   return db
     .collection('users')
     .insertOne({
       _id: nanoid(12),
-      emailVerified: false,
-      profilePicture,
-      email,
+      phone,
       password,
       name,
-      bio,
+      call_name,
+      birthdate
     })
     .then(({ ops }) => ops[0]);
 }
