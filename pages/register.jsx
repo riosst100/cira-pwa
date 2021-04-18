@@ -3,6 +3,7 @@ import Layout from '@/components/layoutSub'
 import Router from 'next/router';
 import { useCurrentUser } from '@/hooks/index';
 import Link from 'next/link'
+import NProgress from '@/components/nprogress';
 
 const SignupPage = () => {
   const [user, { mutate }] = useCurrentUser();
@@ -14,9 +15,15 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Start progress bar
+    NProgress.start();
+
     const body = {
-      email: e.currentTarget.email.value,
-      name: e.currentTarget.name.value,
+      phone: e.currentTarget.phone.value,
+      name: e.currentTarget.full_name.value,
+      call_name: e.currentTarget.call_name.value,
+      birthdate: e.currentTarget.birthdate.value,
       password: e.currentTarget.password.value,
     };
     const res = await fetch('/api/users', {
@@ -28,6 +35,9 @@ const SignupPage = () => {
       const userObj = await res.json();
       mutate(userObj);
     } else {
+      // Start progress bar
+      NProgress.done();
+
       setErrorMsg(await res.text());
     }
   };
@@ -46,7 +56,7 @@ const SignupPage = () => {
             </label>
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="full_name" id="full_name" onChange={e => setFullName(e.target.value)} type="text" required/>
+                name="full_name" id="full_name" type="text" required/>
         </div>
         <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -54,7 +64,7 @@ const SignupPage = () => {
             </label>
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="call_name" id="call_name" onChange={e => setCallName(e.target.value)} type="text" required/>
+                name="call_name" id="call_name" type="text" required/>
         </div>
         <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -62,7 +72,7 @@ const SignupPage = () => {
             </label>
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="birthdate" id="birthdate" onChange={e => setBirthDate(e.target.value)} type="date" placeholder="Ingresa tu Fecha de Nacimiento" required/>
+                name="birthdate" id="birthdate" type="date" placeholder="Ingresa tu Fecha de Nacimiento" required/>
         </div>
         <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -70,7 +80,7 @@ const SignupPage = () => {
             </label>
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="phone" id="phone" onChange={e => setPhone(e.target.value)} type="number" required/>
+                name="phone" id="phone" type="number" required/>
         </div>
         <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -79,7 +89,7 @@ const SignupPage = () => {
             <div>Tentukan password untuk akun member kamu.</div>
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="password" id="password" onChange={e => setPassword(e.target.value)} type="password" required/>
+                name="password" id="password" type="password" required/>
         </div>
         <div className="flex items-center justify-between">
             <button id="submit"

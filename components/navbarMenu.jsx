@@ -1,49 +1,60 @@
 import Link from 'next/link'
-import { SearchOutline, CameraOutline } from 'react-ionicons'
+import { SearchOutline, NotificationsOutline, LogInOutline } from 'react-ionicons'
 
 export default function NavbarMenu({ user }) {
   return (
     <div className="header bg-primary">
-    <div className="left">
-        <a href="#" className="headerButton" data-toggle="modal" data-target="#sidebarPanel">
-            <CameraOutline
+      <div className="left">
+        <a className="headerButton">
+          <NotificationsOutline 
             color={'#ffffff'} 
-            height="30px"
-            width="30px"
-            />
+            height="25px"
+            width="25px"
+          />
         </a>
-    </div>
-    <div className="pageTitle">
-        <img src="https://brebes-social.id/public/images/logo/cira-text.png" alt="logo" className="logo"/>
-    </div>
-    <div className="right">
+      </div>
+      <div className="pageTitle">
+        <Link href="/">
+          <a>
+            <img src="https://brebes-social.id/public/images/logo/cira-text.png" alt="logo" className="logo"/>
+          </a>
+        </Link>
+      </div>
+      <div className="right">
         <a href="app-notifications.html" className="headerButton">
-            <SearchOutline
+          <SearchOutline
             color={'#ffffff'} 
-            height="28px"
-            width="28px"
-            />
+            height="25px"
+            width="25px"
+          />
         </a>
         {!user ? (
-              <>
-                <Link href="/login">
-                    <a href="app-settings.html" className="headerButton">
-                        <img src="https://brebes-social.id/public/images/profile/blank.webp" alt="image" className="imaged w32"/>
-                        <span className="badge badge-danger">6</span>
-                    </a>
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link href={`/user/${user._id}`}>
-                    <a href="app-settings.html" className="headerButton">
-                        <img src="https://brebes-social.id/public/images/profile/blank.webp" alt="image" className="imaged w32"/>
-                        <span className="badge badge-danger">6</span>
-                    </a>
-                </Link>
-              </>
-            )}
+          <>
+            <Link href="/login">
+              <a href="app-settings.html" className="headerButton">
+                <LogInOutline
+                  color={'#ffffff'} 
+                  height="28px"
+                  width="28px"
+                />
+              </a>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href={`/user/${user._id}`}>
+              <a href="app-settings.html" className="headerButton">
+                <img style={{ 
+                  'width': '30px', 
+                  'marginTop': '0px', 
+                  'marginLeft': '7px'
+                }} src="https://brebes-social.id/public/images/profile/blank.webp" alt="image" className="imaged" />
+                <span className="badge badge-danger">6</span>
+              </a>
+            </Link>
+          </>
+        )}
+      </div>
     </div>
-</div>
   )
 }

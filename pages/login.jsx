@@ -3,6 +3,7 @@ import Layout from '@/components/layoutSub'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCurrentUser } from '@/hooks/index';
+import NProgress from '@/components/nprogress';
 
 const LoginPage = () => {
   const router = useRouter();
@@ -15,8 +16,12 @@ const LoginPage = () => {
 
   async function onSubmit(e) {
     e.preventDefault();
+
+    // Start progress bar
+    NProgress.start();
+
     const body = {
-      email: e.currentTarget.phone.value,
+      phone: e.currentTarget.phone.value,
       password: e.currentTarget.password.value,
     };
     const res = await fetch('/api/auth', {
@@ -28,6 +33,8 @@ const LoginPage = () => {
       const userObj = await res.json();
       mutate(userObj);
     } else {
+      NProgress.done();
+
       setErrorMsg('Incorrect username or password. Try again!');
     }
   }
@@ -42,7 +49,7 @@ const LoginPage = () => {
         <div>{errorMsg ? <p style={{ color: 'red' }}>{errorMsg}</p> : null}</div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Email
+            Nomor HP
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

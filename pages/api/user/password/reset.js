@@ -3,7 +3,7 @@ import nc from 'next-connect';
 import { sendMail } from '@/lib/mail';
 import { database } from '@/middlewares/index';
 import {
-  findUserByEmail, updateUserById, findAndDeleteTokenByIdAndType, insertToken,
+  findUserByPhone, updateUserById, findAndDeleteTokenByIdAndType, insertToken,
 } from '@/db/index';
 
 const handler = nc();
@@ -11,7 +11,7 @@ const handler = nc();
 handler.use(database);
 
 handler.post(async (req, res) => {
-  const user = await findUserByEmail(req.db, req.body.email);
+  const user = await findUserByPhone(req.db, req.body.phone);
   if (!user) {
     res.status(401).send('The email is not found');
     return;

@@ -11,7 +11,7 @@ export default function LayoutSub(props) {
           <link rel="icon" href="https://brebes-social.id/public/images/logo/cira-blue-transparent.png" />
         </Head>
         <Navbar title={props.title} />
-        <div style={{ background: 'rgb(237 237 245)', padding: '0px' }}>
+        <div style={{ background: 'rgb(237 237 245)', padding: '60px 10px 10px 10px' }}>
           {props.children}
         </div>
         <div className="footer mb-12 pb-3">
