@@ -39,13 +39,12 @@ export default function PostEditor() {
       </p>
       <form onSubmit={hanldeSubmit} style={{ flexDirection: 'row' }} autoComplete="off">
         <label htmlFor="name">
-          <input
+          <textarea
             name="content"
-            type="text"
-            placeholder="Say something, I'm giving up on you..."
-          />
+            placeholder="Ada info apa?"
+          ></textarea>
         </label>
-        <button type="submit" style={{ marginLeft: '0.5rem' }}>Post</button>
+        <button type="submit" style={{ marginLeft: '0.5rem' }}>Kirim</button>
       </form>
     </>
   );
