@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Navbar from './navbarMenu'
-import Footer from './footer'
+import BottomMenu from './bottomMenu'
 import { useCurrentUser } from '@/hooks/user';
 import { favicon } from '@/lib/core-data';
+import Footer from '@/components/footer';
 
 export default function Layout(props) {
   const [user] = useCurrentUser();
@@ -11,7 +12,7 @@ export default function Layout(props) {
       <div>
         <Head>
           <title>{props.title}</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
           <link rel="icon" href={favicon} />
           <link rel="manifest" href="/manifest.json"></link>
         </Head>
@@ -19,14 +20,9 @@ export default function Layout(props) {
         <div style={{ background: 'rgb(237 237 245)', padding: '0px' }}>
           {props.children}
         </div>
-        <Footer />
+        <BottomMenu />
       </div>
-      <div className="footer mb-12 pb-3">
-        <div className="footer-title">
-          Copyright © Cira App 2021. All Rights Reserved.
-        </div>
-        Inovasi untuk kemudahan online
-      </div>
+      <Footer />
     </div>
   )
 }

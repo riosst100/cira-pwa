@@ -1,4 +1,4 @@
-import Layout from '../components/layout'
+import Layout from '@/components/layout'
 import { useCurrentUser } from '@/hooks/index';
 import { useRouter } from 'next/router'
 import NProgress from '@/components/nprogress';
