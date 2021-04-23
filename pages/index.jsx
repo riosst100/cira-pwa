@@ -2,17 +2,17 @@ import React from 'react';
 import { useCurrentUser } from '@/hooks/index';
 import Layout from '@/components/layout'
 import LoginRegister from '@/components/loginRegister'
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Category from '@/components/category'
+import PageBanner from '@/components/pageBanner'
 
 const IndexPage = () => {
   const [user] = useCurrentUser();
 
   return (
     <Layout title="Cira App">
-      <div className="section content-section pt-1">
-        <img className="home-banner" src="https://brebes-social.id/public/images/banner/banner-cira.png"/>
-      </div>
+      <PageBanner page="home" />
       <LoginRegister user={user} />
+      <Category />
     </Layout>
   );
 };

@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ArrowBackOutline } from 'react-ionicons'
+import { logoWhiteTrans } from '@/lib/core-data';
 
 export default function Navbar({ title }) {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function Navbar({ title }) {
         {title}
     </div>
     <div className="right">
-    <img onClick={() => router.push('/')} className="block lg:hidden h-7 w-auto mr-1" src="https://brebes-social.id/public/images/logo/cira-white-transparent.png"/>
+    <img onClick={() => router.push('/')} className="block lg:hidden h-7 w-auto mr-1" src={logoWhiteTrans} />
     </div>
 </div>
   )

@@ -11,32 +11,34 @@ function Post({ post }) {
     <>
       <style jsx>
         {`
-          div {
-            box-shadow: 0 5px 10px rgba(0,0,0,0.12);
-            padding: 1.5rem;
-            margin-bottom: 0.5rem;
+          .post {
+            box-shadow: 0 2px 2px rgba(0,0,0,0.12);
+            padding: 8px;
+            margin-bottom: 1rem;
             transition: box-shadow 0.2s ease 0s;
-          }
-          div:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            background-color: white;
+            cursor: pointer;
           }
           small {
             color: #777;
           }
         `}
       </style>
-      <div>
+      <div className="post">
         {user && (
-          <Link href={`/user/${user._id}`}>
-            <a style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <img width="27" height="27" style={{ borderRadius: '50%', objectFit: 'cover', marginRight: '0.3rem' }} src={user.profilePicture || defaultProfilePicture(user._id)} alt={user.name} />
-              <b>{user.name}</b>
-            </a>
-          </Link>
+          <div style={{"padding":"5px"}}>
+            <Link href={`/user/${user._id}`}>
+              <a style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <img width="32" height="32" style={{ borderRadius: '50%', objectFit: 'cover', marginRight: '0.3rem' }} src={user.profilePicture || defaultProfilePicture(user._id)} alt={user.name} />
+                <b>{user.name}</b>
+              </a>
+            </Link>
+          </div>
         )}
-        <p>
+        <hr></hr>
+        <div style={{"padding":"8px"}}>
           {post.content}
-        </p>
+        </div>
         <small>{new Date(post.createdAt).toLocaleString()}</small>
       </div>
     </>
@@ -86,7 +88,7 @@ export default function Posts({ creatorId }) {
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.posts.length < PAGE_SIZE);
 
   return (
-    <div>
+    <div style={{ "margin":"10px"}}>
       {posts.map((post) => <Post key={post._id} post={post} />)}
       {!isReachingEnd && (
       <button
@@ -98,7 +100,7 @@ export default function Posts({ creatorId }) {
         onClick={() => setSize(size + 1)}
         disabled={isReachingEnd || isLoadingMore}
       >
-        {isLoadingMore ? '. . .' : 'load more'}
+        {isLoadingMore ? '...' : 'load more'}
       </button>
       )}
     </div>

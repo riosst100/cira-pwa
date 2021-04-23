@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCurrentUser } from '@/hooks/index';
 import NProgress from '@/components/nprogress';
+import { logoBlueTrans } from '@/lib/core-data';
 
 const LoginPage = () => {
   const router = useRouter();
@@ -43,7 +44,7 @@ const LoginPage = () => {
     <Layout title="Login Member">
     <div className="flex items-center justify-center">
       <form onSubmit={onSubmit} className="w-full bg-white shadow-md rounded px-5 pt-6 pb-8">
-        <div className="text-center"><img className="mx-auto" src="https://brebes-social.id/public/images/logo/cira-blue-transparent.png" style={{ width: '70px' }} /></div>
+        <div className="text-center"><img className="mx-auto" src={logoBlueTrans} style={{ width: '70px' }} /></div>
         <h1 className="mt-2 block text-gray-700 font-bold mb-2 text-xl text-center">Masuk ke Cira App</h1>
         <br/>
         <div>{errorMsg ? <p style={{ color: 'red' }}>{errorMsg}</p> : null}</div>
