@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { SearchOutline, NotificationsOutline, LogInOutline } from 'react-ionicons'
+import { logoWithText, blankProfile } from '@/lib/core-data';
 
 export default function NavbarMenu({ user }) {
   return (
@@ -16,7 +17,7 @@ export default function NavbarMenu({ user }) {
       <div className="pageTitle">
         <Link href="/">
           <a>
-            <img src="https://brebes-social.id/public/images/logo/cira-text.png" alt="logo" className="logo"/>
+            <img src={logoWithText} alt="logo" className="logo"/>
           </a>
         </Link>
       </div>
@@ -48,7 +49,7 @@ export default function NavbarMenu({ user }) {
                   'width': '30px', 
                   'marginTop': '0px', 
                   'marginLeft': '7px'
-                }} src="https://brebes-social.id/public/images/profile/blank.webp" alt="image" className="imaged" />
+                }} src={blankProfile} alt="image" className="imaged" />
                 <span className="badge badge-danger">6</span>
               </a>
             </Link>

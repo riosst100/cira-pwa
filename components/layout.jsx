@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import Navbar from './navbarMenu'
 import Footer from './footer'
-import { useCurrentUser } from '@/hooks/index';
+import { useCurrentUser } from '@/hooks/user';
+import { favicon } from '@/lib/core-data';
 
 export default function Layout(props) {
   const [user] = useCurrentUser();
@@ -11,7 +12,7 @@ export default function Layout(props) {
         <Head>
           <title>{props.title}</title>
           <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-          <link rel="icon" href="https://brebes-social.id/public/images/logo/cira-blue-transparent.png" />
+          <link rel="icon" href={favicon} />
           <link rel="manifest" href="/manifest.json"></link>
         </Head>
         <Navbar user={user} />

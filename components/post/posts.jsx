@@ -100,7 +100,7 @@ export default function Posts({ creatorId }) {
         onClick={() => setSize(size + 1)}
         disabled={isReachingEnd || isLoadingMore}
       >
-        {isLoadingMore ? '. . .' : 'load more'}
+        {isLoadingMore ? '...' : 'load more'}
       </button>
       )}
     </div>

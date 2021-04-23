@@ -18,7 +18,7 @@ export async function updateUserById(db, id, update) {
   return db.collection('users').findOneAndUpdate(
     { _id: id },
     { $set: update },
-    { returnOriginal: false },
+    { returnOriginal: false }, 
   ).then(({ value }) => value);
 }
 
