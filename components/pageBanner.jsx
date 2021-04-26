@@ -6,7 +6,7 @@ export default function PageBanner({ page }) {
     }
     return (
         <div className="section content-section pt-1">
-            <img className="home-banner" src={banner}/>
+            <img className="home-banner" src={banner} style={{ 'width': '100%' }} />
         </div>
     );
 }
