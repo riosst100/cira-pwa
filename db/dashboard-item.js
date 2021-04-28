@@ -1,11 +1,18 @@
 import { nanoid } from 'nanoid';
 
-export async function getDashboardItems(db, limit) {
+export async function getDashboardItems(db, limit, from) {
   return db
     .collection('dashboard_item')
-    .find({})
+    .find({
+      // Pagination: Fetch posts from before the input date or fetch from newest
+      ...(from && {
+        sort_order: {
+          $gte: from,
+        },
+      }),
+    })
     .sort({ sort_order: 1 })
-    .limit(limit || 10)
+    .limit(limit || 100)
     .toArray();
 }
 

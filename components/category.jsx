@@ -5,6 +5,10 @@ import fetcher from '@/lib/fetch';
 import { serverURL } from '@/lib/core-data';
 
 function DashboardItem({ item }) {
+  let row = false;
+  if (item.sort_order%3 == 0) {
+    row = true;
+  }
   return (
     <>
       <td style={
@@ -50,38 +54,54 @@ function DashboardItem({ item }) {
   );
 }
 
-export function getCategories() {
+export function getCategories({ limit, row }) {
+  const from = (3*row)+1;
   return useSWRInfinite((index, previousPageData) => {
     // reached the end
     if (previousPageData && previousPageData.posts.length === 0) return null;
 
     // first page, previousPageData is null
     if (index === 0) {
-      return `/api/dashboard-item?limit=3`;
+      return `/api/dashboard-item?${
+        limit ? `limit=${limit}` : ''}${
+        from ? `&from=${from}` : ''
+      }`;
     }
 
-    // using oldest posts createdAt date as cursor
-    // We want to fetch posts which has a datethat is
-    // before (hence the .getTime() - 1) the last post's createdAt
-    const from = new Date(
-      new Date(
-        previousPageData.posts[previousPageData.posts.length - 1].createdAt,
-      ).getTime() - 1,
-    ).toJSON();
-
-    return `/api/dashboard-item?limit=3`;
-  }, fetcher, {
-    refreshInterval: 10000, // Refresh every 10 seconds
-  });
+    return `/api/dashboard-item?${
+      limit ? `limit=${limit}` : ''}${
+      from ? `&from=${from}` : ''
+    }`;
+  }, fetcher, {});
 }
 
-export default function CategoryList() {
-
+function DashboardItemRow({ row }) {
+  const limit = 3;
   const {
     data, error, size, setSize,
-  } = getCategories();
+  } = getCategories({ limit, row });
 
   const dashboard_items = data ? data.reduce((acc, val) => [...acc, ...val.dashboard_items], []) : [];
+  return (
+    <tr>
+    {
+      dashboard_items.map((item) => 
+        <DashboardItem key={item._id} item={item}/>
+      )
+    }
+    </tr>
+  )
+}
+
+export default function CategoryList() 
+{
+  const {
+    data, error, size, setSize,
+  } = getCategories(100,1);
+
+  const dashboard_items = data ? data.reduce((acc, val) => [...acc, ...val.dashboard_items], []) : [];
+
+  const total_item = Math.floor(dashboard_items.length/3);
 
   return (
     <table style={
@@ -93,9 +113,11 @@ export default function CategoryList() {
       }
     }>
       <tbody>
-        <tr>
-          {dashboard_items.map((item) => <DashboardItem key={item._id} item={item} />)}
-        </tr>
+        {[...Array(total_item)].map((e, i) => {
+          return (
+            <DashboardItemRow key={i} row={i} /> 
+          )
+        })}
       </tbody>
     </table>
   );

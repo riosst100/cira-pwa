@@ -11,7 +11,8 @@ const maxAge = 1 * 24 * 60 * 60;
 handler.get(async (req, res) => {
   const dashboard_items = await getDashboardItems(
     req.db,
-    req.query.limit ? parseInt(req.query.limit, 10) : undefined,
+    req.query.limit ? parseInt(req.query.limit) : undefined,
+    req.query.from ? parseInt(req.query.from) : undefined
   );
 
   if (req.query.from && dashboard_items.length > 0) {
