@@ -1,15 +1,10 @@
 import Layout from '@/components/layout'
+import PageBanner from '@/components/pageBanner'
 
-export default function Forum(props) {
+export default function Forum() {
     return (
         <Layout title="Cira App">
-          <div id="content-container">
-              <div className="section content-section pt-1">
-                  <div className="content">
-            <div><b>Ruang Diskusi</b></div>
-          </div>
-          </div>
-          </div>
+          <PageBanner page="social" />
         </Layout>
       )
 }

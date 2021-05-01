@@ -11,4 +11,7 @@ module.exports = {
     SESSION_SECRET: process.env.SESSION_SECRET,
     IMAGE_SERVER_URL: process.env.IMAGE_SERVER_URL
   },
+  images: {
+    domains: ["brebes-social.id"],
+  },
 };
