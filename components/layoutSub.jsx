@@ -15,7 +15,7 @@ export default function LayoutSub(props) {
         <div style={{ background: 'rgb(237 237 245)', padding: '45px 0px 0px 0px' }}>
           {props.children}
         </div>
-        <Footer />
+        {props.hideFooter ? '' : <Footer />}
       </div>
   )
 }
