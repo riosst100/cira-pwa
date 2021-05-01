@@ -9,7 +9,8 @@ module.exports = {
     SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
     EMAIL_FROM: process.env.EMAIL_FROM,
     SESSION_SECRET: process.env.SESSION_SECRET,
-    IMAGE_SERVER_URL: process.env.IMAGE_SERVER_URL
+    IMAGE_SERVER_URL: process.env.IMAGE_SERVER_URL,
+    ABLY_API_KEY: process.env.ABLY_API_KEY
   },
   images: {
     domains: ["brebes-social.id"],

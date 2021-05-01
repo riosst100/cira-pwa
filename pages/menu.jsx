@@ -37,7 +37,7 @@ export default function Menu() {
                                 color={'#27173E'} 
                                 height="22px"
                                 width="22px"
-                            /> <span style={{ "margin-left": "5px" }}>Pesanan Saya</span>
+                            /> <span style={{ "marginLeft": "5px" }}>Pesanan Saya</span>
                         </div>
                     </div>
                     <div className="section pt-1" style={
@@ -51,7 +51,7 @@ export default function Menu() {
                                 color={'#27173E'} 
                                 height="22px"
                                 width="22px"
-                            /> <span style={{ "margin-left": "5px" }}>Pengaturan</span>
+                            /> <span style={{ "marginLeft": "5px" }}>Pengaturan</span>
                         </div>
                     </div>
                     <div className="section pt-1" style={
@@ -65,7 +65,7 @@ export default function Menu() {
                                 color={'#27173E'} 
                                 height="22px"
                                 width="22px"
-                            /> <span style={{ "margin-left": "5px" }}>Bantuan</span>
+                            /> <span style={{ "marginLeft": "5px" }}>Bantuan</span>
                         </div>
                     </div>
                     <div onClick={handleLogout} className="section pt-1" style={
@@ -79,7 +79,7 @@ export default function Menu() {
                                 color={'#27173E'} 
                                 height="22px"
                                 width="22px"
-                            /> <span style={{ "margin-left": "5px" }}>Keluar</span>
+                            /> <span style={{ "marginLeft": "5px" }}>Keluar</span>
                         </div>
                     </div>
                 </div>
