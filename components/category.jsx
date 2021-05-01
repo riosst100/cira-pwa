@@ -3,6 +3,7 @@ import React from 'react';
 import { useSWRInfinite } from 'swr';
 import fetcher from '@/lib/fetch';
 import { serverURL } from '@/lib/core-data';
+import Skeleton from "react-loading-skeleton";
 
 function DashboardItem({ item }) {
   let row = false;
@@ -31,7 +32,7 @@ function DashboardItem({ item }) {
                 "paddingTop": "4px"
               }
             }>
-              <img src={ serverURL + "/images/icon/" + item.code + ".png"} style={
+              <img src={ serverURL + "/images/icon/" + item.code + ".webp"} style={
                 {
                   "width": "50px"
                 }
@@ -85,9 +86,11 @@ function DashboardItemRow({ row }) {
   return (
     <tr>
     {
-      dashboard_items.map((item) => 
-        <DashboardItem key={item._id} item={item}/>
-      )
+      dashboard_items ? (
+        dashboard_items.map((item) => 
+          <DashboardItem key={item._id} item={item}/>
+        )
+      ) : <Skeleton />
     }
     </tr>
   )

@@ -4,9 +4,17 @@ import Layout from '@/components/layout'
 import LoginRegister from '@/components/loginRegister'
 import Category from '@/components/category'
 import PageBanner from '@/components/pageBanner'
+import Skeleton from 'react-loading-skeleton';
+import { useState } from 'react'
 
 const IndexPage = () => {
   const [user] = useCurrentUser();
+  const [isCategoryReady, setIsCategoryReady] = useState(false);
+
+    const timeout = 1000 + Math.floor(Math.random() * 5000)
+    setTimeout(() => {
+      setIsCategoryReady(true)
+    }, timeout);
 
   return (
     <Layout title="Cira App">

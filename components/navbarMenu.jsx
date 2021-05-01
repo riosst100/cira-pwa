@@ -7,6 +7,7 @@ export default function NavbarMenu({ user }) {
     <div className="header bg-primary">
       <div className="left">
         <a className="headerButton">
+          <span className="badge badge-danger">6</span>
           <NotificationsOutline 
             color={'#ffffff'} 
             height="25px"
@@ -50,7 +51,6 @@ export default function NavbarMenu({ user }) {
                   'marginTop': '0px', 
                   'marginLeft': '7px'
                 }} src={blankProfile} alt="image" className="imaged" />
-                <span className="badge badge-danger">6</span>
               </a>
             </Link>
           </>
