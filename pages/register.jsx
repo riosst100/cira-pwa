@@ -6,7 +6,7 @@ import Link from 'next/link'
 import NProgress from '@/components/nprogress';
 import { logoBlueTrans } from '@/lib/core-data';
 
-const SignupPage = () => {
+export default function SignupPage() {
   const [user, { mutate }] = useCurrentUser();
   const [errorMsg, setErrorMsg] = useState('');
   useEffect(() => {
@@ -26,6 +26,8 @@ const SignupPage = () => {
       call_name: e.currentTarget.call_name.value,
       birthdate: e.currentTarget.birthdate.value,
       password: e.currentTarget.password.value,
+      kecamatan: e.currentTarget.kecamatan.value,
+      desa: e.currentTarget.desa.value,
     };
     const res = await fetch('/api/users', {
       method: 'POST',
@@ -46,12 +48,17 @@ const SignupPage = () => {
   return (
     <Layout title="Daftar Jadi Member">
     <div className="flex items-center justify-center">
-    <form onSubmit={handleSubmit} className="w-full bg-white shadow-md rounded px-5 pt-6 pb-8">
-        <div className="text-center"><img className="mx-auto" src={logoBlueTrans} style={{ width: '70px' }} /></div>
-        <h1 className="mt-2 block text-gray-700 font-bold mb-2 text-xl text-center">Daftar jadi member Cira</h1>
-        <br/>
+    <form onSubmit={handleSubmit} className="w-full bg-white shadow-md rounded p-3 m-2">
         <div>{errorMsg ? <p style={{ color: 'red' }}>{errorMsg}</p> : null}</div>
-        <div className="mb-4">
+        <div className="mb-2" style={
+          {
+            "fontWeight":"bold",
+            "fontSize":"20px",
+            "color": "#369bff"
+          }
+        }>Data Diri</div>
+        <hr></hr>
+        <div className="mb-4 mt-2">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Nama Lengkap
             </label>
@@ -75,13 +82,45 @@ const SignupPage = () => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="birthdate" id="birthdate" type="date" placeholder="Ingresa tu Fecha de Nacimiento" required/>
         </div>
+        <div className="mb-2 mt-5" style={
+          {
+            "fontWeight":"bold",
+            "fontSize":"20px",
+            "color": "#369bff"
+          }
+        }>Alamat</div>
+        <hr></hr>
+        <div className="mb-4 mt-2">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+                Kecamatan
+            </label>
+            <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="kecamatan" id="kecamatan" type="text" placeholder="Cth. Banjarharjo" required/>
+        </div>
         <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+                Desa
+            </label>
+            <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="desa" id="desa" type="text" placeholder="Cth. Tiwulandu" required/>
+        </div>
+        <div className="mb-2 mt-5" style={
+          {
+            "fontWeight":"bold",
+            "fontSize":"20px",
+            "color": "#369bff"
+          }
+        }>Data Akun</div>
+        <hr></hr>
+        <div className="mb-4 mt-2">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Nomor HP
             </label>
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="phone" id="phone" type="number" required/>
+                name="phone" id="phone" type="number" placeholder="Cth. 087812345678" required/>
         </div>
         <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -92,19 +131,20 @@ const SignupPage = () => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="password" id="password" type="password" required/>
         </div>
-        <div className="flex items-center justify-between">
+        <hr></hr>
+        <div className="mt-4" style={{"textAlign":"center"}}>
             <button id="submit"
                 className="bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit">
                 <i className="fab fa-whatsapp"></i> Daftar Sekarang
             </button>
+            <div style={{"padding":"10px","textDecoration":"underline"}} className="color-primary">
+              <Link href="/login"><a>Sudah jadi member? Klik untuk masuk</a></Link>
+            </div>
         </div>
-        <div>Sudah punya jadi member? <Link href="/login"><a>Login</a></Link></div>
     </form>
 </div>
 
 </Layout>
   );
 };
-
-export default SignupPage;

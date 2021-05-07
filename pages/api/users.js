@@ -1,23 +1,26 @@
 import nc from 'next-connect';
-import isEmail from 'validator/lib/isEmail';
-import normalizeEmail from 'validator/lib/normalizeEmail';
 import bcrypt from 'bcryptjs';
 import { all } from '@/middlewares/index';
 import { extractUser } from '@/lib/api-helpers';
 import { insertUser, findUserByPhone } from '@/db/index';
+import { capitalizedText } from '@/components/text/CapitalizedText';
 
 const handler = nc();
 
 handler.use(all);
 
 handler.post(async (req, res) => {
-  const { phone, call_name, name, birthdate, password } = req.body;
+  const { phone, birthdate, password } = req.body;
+  const name = capitalizedText(req.body.name);
+  const call_name = capitalizedText(req.body.call_name);
+  const kecamatan = capitalizedText(req.body.kecamatan);
+  const desa = capitalizedText(req.body.desa);
   // const email = normalizeEmail(req.body.email);
   // if (!isEmail(email)) {
   //   res.status(400).send('The email you entered is invalid.');
   //   return;
   // }
-  if (!password || !name || !call_name || !birthdate || !phone) {
+  if (!password || !name || !call_name || !birthdate || !phone || !kecamatan || !desa) {
     res.status(400).send('Missing field(s)');
     return;
   }
@@ -26,8 +29,9 @@ handler.post(async (req, res) => {
     return;
   }
   const hashedPassword = await bcrypt.hash(password, 10);
+  const role = "Member";
   const user = await insertUser(req.db, {
-    phone, password: hashedPassword, bio: '', name, call_name, birthdate,
+    phone, password: hashedPassword, bio: '', name, call_name, birthdate, kecamatan, desa, role
   });
   req.logIn(user, (err) => {
     if (err) throw err;

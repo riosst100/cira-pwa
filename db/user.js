@@ -1,5 +1,4 @@
 import { nanoid } from 'nanoid';
-import normalizeEmail from 'validator/lib/normalizeEmail';
 
 export async function findUserById(db, userId) {
   return db.collection('users').findOne({
@@ -23,7 +22,7 @@ export async function updateUserById(db, id, update) {
 }
 
 export async function insertUser(db, {
-  phone, password, call_name, name, birthdate,
+  phone, password, call_name, name, birthdate, kecamatan, desa, role
 }) {
   return db
     .collection('users')
@@ -33,7 +32,10 @@ export async function insertUser(db, {
       password,
       name,
       call_name,
-      birthdate
+      birthdate,
+      kecamatan,
+      desa,
+      role
     })
     .then(({ ops }) => ops[0]);
 }

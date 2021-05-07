@@ -11,6 +11,15 @@ body {
     margin: 0;
     font-weight: 400;
   }
+  .color-primary {
+    color: #369bff
+  }
+  .success-msg {
+    background-color: #36ce53;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+  }
   .header {
     height: 45px;
     display: flex;
@@ -162,9 +171,6 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-  }
-  img, svg, video, canvas, audio, iframe, embed, object {
-    vertical-align: text-top !important;
   }
   .appBottomMenu .item .col {
     width: 100%;

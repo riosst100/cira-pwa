@@ -2,12 +2,12 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useEffect, useState } from 'react'
 
 export default function PageBanner({ page }) {
-    const [isImageReady, setIsImageReady] = useState(false);
+    // const [isImageReady, setIsImageReady] = useState(false);
 
-    const timeout = 1000 + Math.floor(Math.random() * 5000)
-    setTimeout(() => {
-        setIsImageReady(true)
-    }, timeout);
+    // const timeout = 1000 + Math.floor(Math.random() * 5000)
+    // setTimeout(() => {
+    //     setIsImageReady(true)
+    // }, timeout);
 
     // const onLoadCallBack = (e) => {
     //     setIsImageReady(true)
