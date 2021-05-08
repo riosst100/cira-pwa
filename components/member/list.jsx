@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSWRInfinite } from 'swr';
 import Link from 'next/link';
-import { useUser } from '@/hooks/index';
 import fetcher from '@/lib/fetch';
 import { defaultProfilePicture } from '@/lib/default';
 
@@ -48,8 +47,8 @@ function Member({ member }) {
                         }
                         />
                         <div style={{ "paddingRight": "5px"}}>
-                        <div style={{ "marginLeft": "50px", "fontWeight":"500" }}>{member.name} <span className="badge badge-danger" style={{ "float":"right", "fontSize":"10px", "height":"18px" }}>{member.role}</span></div>
-                        <div style={{ "marginLeft": "50px", "color": "grey", "fontSize":"12px" }}>Desa Tiwulandu, Kec. Banjarharjo</div>
+                        <div style={{ "marginLeft": "50px", "fontWeight":"500" }}>{member.name} <span className="badge badge-danger" style={{ "float":"right", "fontSize":"10px", "height":"18px" }}>{member.role ? member.role : 'Member'}</span></div>
+                        <div style={{ "marginLeft": "50px", "color": "grey", "fontSize":"12px" }}>{member.desa && 'Desa ' + member.desa}{member.desa && member.kecamatan ? ', ' : 'Alamat tidak diketahui'} {member.kecamatan && 'Kec. '+member.kecamatan}</div>
                         </div>
                     </div>
                 </a>
