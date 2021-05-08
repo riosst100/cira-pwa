@@ -3,3 +3,4 @@ export * from './post';
 export * from './token';
 export * from './dashboard-item';
 export * from './member';
+export * from './shop/category';

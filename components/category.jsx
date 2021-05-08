@@ -6,10 +6,6 @@ import { serverURL } from '@/lib/core-data';
 import Skeleton from "react-loading-skeleton";
 
 function DashboardItem({ item }) {
-  let row = false;
-  if (item.sort_order%3 == 0) {
-    row = true;
-  }
   return (
     <>
       <td style={
@@ -104,7 +100,7 @@ export default function CategoryList()
 
   const dashboard_items = data ? data.reduce((acc, val) => [...acc, ...val.dashboard_items], []) : [];
 
-  const total_item = Math.floor(dashboard_items.length/3);
+  const total_item = Math.ceil(dashboard_items.length/3);
 
   return (
     <table style={
