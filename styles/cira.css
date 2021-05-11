@@ -1,7 +1,6 @@
 body {
     font-family: "Poppins", sans-serif;
     font-size: 14px;
-    line-height: 1.6rem;
     letter-spacing: 0.004em;
     color: black;
     background: #EDEDF5;
@@ -61,12 +60,6 @@ body {
     padding: 10px;
     color: #6236FF;
     position: relative;
-  }
-  a {
-    transition: .2s all;
-    color: #6236FF;
-    text-decoration: none;
-    background-color: transparent;
   }
   img {
     vertical-align: middle;
