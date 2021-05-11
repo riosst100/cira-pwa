@@ -13,3 +13,9 @@ export async function getShopCategory(db, limit, from) {
     .limit(limit || 100)
     .toArray();
 }
+
+export async function findShopCategoryByCode(db, category_code) {
+  return db.collection('shop_category').findOne({
+    code: category_code,
+  }).then((category) => category || null);
+}
