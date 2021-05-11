@@ -45,7 +45,7 @@ function Category({ item }) {
                 }
                 }>
                     <div className="content">
-                        <div style={{"padding":"5px", "paddingTop":"15px"}}>
+                        <div style={{"padding":"10px 5px 5px"}}>
                             <img src="https://brebes-social.id/images/logo/cira-blue-transparent.webp" alt="image" className="imaged" style={
                                 {
                                     "width": "40px",
@@ -57,34 +57,38 @@ function Category({ item }) {
                                 <div style={{ "marginLeft": "50px", "fontWeight":"500" }}>{item.name} <StoreStatus code={item.status} /></div>
                                 <div style={{ "marginLeft": "50px", "color": "grey", "fontSize":"12px" }}>{item.desa && 'Desa ' + item.desa}{item.desa && item.kecamatan ? ', ' : 'Alamat tidak diketahui'} {item.kecamatan && 'Kec. '+item.kecamatan}</div>
                             </div>
-                            <div style={{"padding":"2px", "marginTop":"10px"}}><hr /></div>
+                            <div style={{"padding":"2px", "marginTop":"6px"}}><hr /></div>
                             <div style={{"padding":"5px"}}>{item.bio}</div>
                         </div>
                         <div>
                             <img src="http://d20aeo683mqd6t.cloudfront.net/articles/title_images/000/040/307/medium/japanese-supermarket-p70745807_M_%281%29.jpg?2021" style={{"height":"200px","width":"100%","objectFit":"cover"}} />
                         </div>
-                        <table style={{
-                            "width":"100%",
-                            "textAlign":"center"
-                        }}>
-                            <tr>
-                                <td style={
-                                    {
-                                        "backgroundColor": "#369bff"
-                                    }
-                                }>
-                                    <Link href={"/shop/"+item.code}>
-                                        <a style={
+                        <div style={{"padding":"8px"}}>
+                            <table style={{
+                                "width":"100%",
+                                "textAlign":"center"
+                            }}>
+                                <tbody>
+                                    <tr>
+                                        <td style={
                                             {
-                                                "padding": "10px",
-                                                "color": "white",
-                                                "display":"block"
+                                                "backgroundColor": "rgb(0, 202, 0)"
                                             }
-                                        }>Masuk ke Toko</a>
-                                    </Link>
-                                </td>
-                            </tr>
-                        </table>
+                                        }>
+                                            <Link href={"/store/"+item.code}>
+                                                <a style={
+                                                    {
+                                                        "padding": "8px",
+                                                        "color": "white",
+                                                        "display":"block"
+                                                    }
+                                                }>Masuk ke Toko</a>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </a>
             </Link>
@@ -96,7 +100,7 @@ export function StoreStatus({code}) {
     const color = code == 1 ? "#00ca00" : "#979797";
     return (
         <span className="badge" style={
-            { "float":"right", "fontSize":"10px", "height":"18px", "color":"white","background-color":color }
+            { "float":"right", "fontSize":"10px", "height":"18px", "color":"white","backgroundColor":color }
         }>{status}</span>
     )
 }
