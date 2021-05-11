@@ -75,7 +75,7 @@ function Category({ item }) {
                 "width": "30%"
             }
             }>
-            <Link href={"/"+ item.code}>
+            <Link href={"/shop/"+ item.code}>
                 <a style={
                 {
                     "backgroundColor": "white",
