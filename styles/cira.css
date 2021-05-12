@@ -52,16 +52,6 @@ body {
   .imaged.w32 {
     width: 32px !important;
   }
-  .header .left .headerButton, .header .right .headerButton {
-    min-width: 36px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    color: #6236FF;
-    position: relative;
-  }
   img {
     vertical-align: middle;
     border-style: none;
@@ -78,7 +68,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 5px 10px 10px;
     color: #6236FF;
     position: relative;
   }
@@ -126,6 +116,11 @@ body {
   .badge-danger {
     color: #fff;
     background-color: #dc3545;
+  }
+
+  .bg {
+    background: url(https://brebes-social.id/images/overlay/idul-fitri.webp);
+    background-size: contain;
   }
   
   .bg-primary {
