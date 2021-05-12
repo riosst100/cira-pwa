@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { useEffect, useState } from 'react'
+import { isLogin } from '@/hooks/index';
 
 export default function LoginRegister({ user }) {
-  let loginStatus = '';
-
-  if (!user) {
-    loginStatus = (<div className="section mt-3">
+    const isUserLogin = isLogin();
+    const loginRegister = (
+    <>
+    <div className="section mt-3 ml-2 mr-2">
     <div className="content text-center p-2">
       <div><b>Selamat Datang di Cira App!</b></div>
       <div className="pb-2"><small>Silahkan Daftar atau Masuk jika sudah terdaftar.</small></div>
@@ -25,8 +25,9 @@ export default function LoginRegister({ user }) {
         </Link>
       </div>
     </div>
-  </div>);
-  }
+  </div>
+  </>
+  );
 
-  return loginStatus;
+  return isUserLogin == false ? loginRegister : <SkeletonTheme color="#e5e5e5" highlightColor="#e9e9e9"><div className="p-2"><Skeleton height={100} /></div></SkeletonTheme>;
 }

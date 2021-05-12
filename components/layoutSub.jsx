@@ -12,7 +12,7 @@ export default function LayoutSub(props) {
           <link rel="icon" href={favicon} />
         </Head>
         <Navbar title={props.title} />
-        <div style={{ background: 'rgb(237 237 245)', padding: '45px 0px 0px 0px' }}>
+        <div style={{ padding: '45px 0px 0px 0px' }}>
           {props.children}
         </div>
         {props.hideFooter ? '' : <Footer />}
