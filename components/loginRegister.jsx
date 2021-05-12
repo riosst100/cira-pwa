@@ -28,5 +28,5 @@ export default function LoginRegister({ user }) {
     </div>
   );
 
-  return data ? !data.user && loginRegister : <SkeletonTheme color="#e5e5e5" highlightColor="#e9e9e9"><div className="p-2"><Skeleton height={100} /></div></SkeletonTheme>;
+  return data ? !data.user && loginRegister : <SkeletonTheme color="#e5e5e5" highlightColor="#e9e9e9"><div className="pl-2 pr-2"><Skeleton height={100} /></div></SkeletonTheme>;
 }
