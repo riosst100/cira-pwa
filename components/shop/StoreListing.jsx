@@ -76,7 +76,7 @@ function Category({ item }) {
                                             }
                                         }>
                                             <Link href={"/store/"+item.code}>
-                                                <a style={
+                                                <a className="bg" style={
                                                     {
                                                         "padding": "8px",
                                                         "color": "white",

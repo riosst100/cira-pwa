@@ -20,7 +20,8 @@ function DashboardItem({ item }) {
               "backgroundColor": "white",
               "padding": "10px 15px",
               "borderRadius": "5px",
-              "display": "block"
+              "display": "block",
+              "boxShadow":"0 1px 3px 0 rgb(0 0 0 / 12%)"
             }
           }>
             <div style={

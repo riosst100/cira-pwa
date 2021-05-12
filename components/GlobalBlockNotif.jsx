@@ -6,7 +6,9 @@ export default function GlobalBlockNotif({ user }) {
   let loginStatus = '';
 
   if (!user) {
-    loginStatus = (<div className="section m-2">
+    loginStatus = (<div className="section m-2" style={{
+        "box-shadow": "0 1px 2px 0 rgb(0 0 0 / 22%)"
+    }}>
     <div className="content text-center">
         <div style={{
             "background": "url(https://brebes-social.id/images/overlay/idul-fitri.webp)",

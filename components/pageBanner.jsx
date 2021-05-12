@@ -20,7 +20,7 @@ export default function PageBanner({ page }) {
     }
     return (
         <>
-            <div className="section content-section mb-3">
+            <div className="section content-section mb-1">
                 {/* {isImageReady || <div className="home-banner"><Skeleton height={150} /></div>} */}
                 {/* style={{"display": isImageReady ? "block" : "none !important"}} */}
                 <img className="home-banner" src={banner} width={"100%"} height={150} />
