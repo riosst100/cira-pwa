@@ -108,7 +108,7 @@ export default function CategoryList()
       { 
         "margin": "0 auto",
         "borderCollapse": "separate",
-        "borderSpacing": "10px",
+        "borderSpacing": "8px",
         "width": "100%"
       }
     }>
