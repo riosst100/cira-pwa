@@ -129,8 +129,10 @@ body {
   }
   
   .bg-primary {
-    background: #1b66af !important;
+    background-color: #174878 !important;
     color: #FFF;
+    background: url(https://brebes-social.id/images/overlay/idul-fitri.webp);
+    background-size: contain;
   }
   
   *, ::after, ::before {
