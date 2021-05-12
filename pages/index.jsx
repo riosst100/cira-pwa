@@ -6,6 +6,7 @@ import Category from '@/components/category'
 import PageBanner from '@/components/pageBanner'
 import Skeleton from 'react-loading-skeleton';
 import { useState } from 'react'
+import GlobalBlockNotif from '@/components/GlobalBlockNotif'
 
 const IndexPage = () => {
   const [user] = useCurrentUser();
@@ -18,6 +19,7 @@ const IndexPage = () => {
 
   return (
     <Layout title="Cira App">
+      <GlobalBlockNotif />
       <PageBanner page="home" />
       <LoginRegister user={user} />
       <Category />
