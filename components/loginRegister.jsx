@@ -7,7 +7,7 @@ export default function LoginRegister({ user }) {
 
   if (!user) {
     loginStatus = (<div className="section mt-3">
-    <div className="content text-center">
+    <div className="content text-center p-2">
       <div><b>Selamat Datang di Cira App!</b></div>
       <div className="pb-2"><small>Silahkan Daftar atau Masuk jika sudah terdaftar.</small></div>
       <div className="pb-1">
