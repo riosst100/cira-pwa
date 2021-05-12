@@ -17,7 +17,7 @@ export default function Layout(props) {
           <link rel="manifest" href="/manifest.json"></link>
         </Head>
         <Navbar user={user} />
-        <div style={{ background: 'rgb(237 237 245)', padding: '0px' }}>
+        <div style={{ padding: '0px' }}>
           {props.children}
         </div>
         <BottomMenu />

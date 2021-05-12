@@ -7,6 +7,12 @@ export function useCurrentUser() {
   return [user, { mutate }];
 }
 
+export function isLogin() {
+  const { data } = useSWR('/api/user', fetcher);
+  const user = data?.user;
+  return user ? true : false;
+}
+
 export function useUser(id) {
   const { data } = useSWR(`/api/users/${id}`, fetcher, { revalidateOnFocus: false });
   return data?.user;

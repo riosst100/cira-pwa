@@ -3,7 +3,7 @@ import React from 'react';
 import { useSWRInfinite } from 'swr';
 import fetcher from '@/lib/fetch';
 import { serverURL } from '@/lib/core-data';
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function DashboardItem({ item }) {
   return (
@@ -95,15 +95,38 @@ function DashboardItemRow({ row }) {
 
 export default function CategoryList() 
 {
-  const {
-    data, error, size, setSize,
-  } = getCategories(100,1);
-
+  const { data } = getCategories(100,1);
   const dashboard_items = data ? data.reduce((acc, val) => [...acc, ...val.dashboard_items], []) : [];
-
   const total_item = Math.ceil(dashboard_items.length/3);
 
+  const table = [...Array(total_item)].map((e, i) => {
+          return (
+            <DashboardItemRow key={i} row={i} /> 
+          )
+        });
+
+  const skeleton = (
+    <>
+      <tr>
+        <td><Skeleton height={100} /></td>
+        <td><Skeleton height={100} /></td>
+        <td><Skeleton height={100} /></td>
+      </tr>
+      <tr>
+        <td><Skeleton height={100} /></td>
+        <td><Skeleton height={100} /></td>
+        <td><Skeleton height={100} /></td>
+      </tr>
+      <tr>
+        <td><Skeleton height={100} /></td>
+        <td><Skeleton height={100} /></td>
+        <td><Skeleton height={100} /></td>
+      </tr>
+    </>
+  );
+
   return (
+    <SkeletonTheme color="#e5e5e5" highlightColor="#e9e9e9">
     <table style={
       { 
         "margin": "0 auto",
@@ -113,12 +136,9 @@ export default function CategoryList()
       }
     }>
       <tbody>
-        {[...Array(total_item)].map((e, i) => {
-          return (
-            <DashboardItemRow key={i} row={i} /> 
-          )
-        })}
+        {data ? table : skeleton}
       </tbody>
     </table>
+    </SkeletonTheme>
   );
 }
