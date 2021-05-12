@@ -7,7 +7,7 @@ export default function GlobalBlockNotif({ user }) {
 
   if (!user) {
     loginStatus = (<div className="section m-2" style={{
-        "box-shadow": "rgb(0 0 0 / 12%) 0px 1px 3px 0px"
+        "boxShadow": "rgb(0 0 0 / 12%) 0px 1px 3px 0px"
     }}>
     <div className="content text-center">
         <div style={{

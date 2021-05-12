@@ -95,15 +95,11 @@ function DashboardItemRow({ row }) {
 
 export default function CategoryList() 
 {
-  const {
-    data, error, size, setSize,
-  } = getCategories(100,1);
-
+  const { data } = getCategories(100,1);
   const dashboard_items = data ? data.reduce((acc, val) => [...acc, ...val.dashboard_items], []) : [];
-
   const total_item = Math.ceil(dashboard_items.length/3);
 
-  return (
+  const table = (
     <table style={
       { 
         "margin": "0 auto",
@@ -121,4 +117,6 @@ export default function CategoryList()
       </tbody>
     </table>
   );
+
+  return data ? table : <Skeleton />;
 }
