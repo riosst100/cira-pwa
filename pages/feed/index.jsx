@@ -18,8 +18,7 @@ export default function Feed() {
   setTimeout(() => setMsg(''), 4000);
 
   return (
-      <Layout title="Informasi">
-          <PageBanner page="home" />
+      <Layout title="Informasi" hideFooter="true">
           <div style={{"margin": "10px", "textAlign":"center"}}>
             <Link href="/feed/create">
               <a>

@@ -4,59 +4,46 @@ import Link from 'next/link'
 import { extractStore } from '@/lib/api-helpers';
 import { findStoreByCode } from '@/db/index';
 import { all } from '@/middlewares/index';
+import ProductList from '@/components/shop/ProductList'
 
 export default function Store({store}) {
   if (!store) return <Error statusCode={404} />;
-  const {
-    code
-  } = store || {};
-  console.log(store)
+  const { name, code } = store || {};
   return (
-    <Layout title="Toko">
-      <div className="content">
-                        <div style={{"padding":"10px 5px 5px"}}>
-                            <img src="https://brebes-social.id/images/logo/cira-blue-transparent.webp" alt="image" className="imaged" style={
-                                {
-                                    "width": "40px",
-                                    "position": "absolute"
-                                }
-                            }
-                            />
-                            <div style={{ "paddingRight": "5px"}}>
-                                <div style={{ "marginLeft": "50px", "fontWeight":"500" }}>{store.name} <StoreStatus code={store.status} /></div>
-                                <div style={{ "marginLeft": "50px", "color": "grey", "fontSize":"12px" }}>{store.desa && 'Desa ' + store.desa}{store.desa && store.kecamatan ? ', ' : 'Alamat tidak diketahui'} {store.kecamatan && 'Kec. '+store.kecamatan}</div>
-                            </div>
-                            <div style={{"padding":"2px", "marginTop":"6px"}}><hr /></div>
-                            <div style={{"padding":"5px"}}>{store.bio}</div>
-                        </div>
-                        <div>
-                            <img src="http://d20aeo683mqd6t.cloudfront.net/articles/title_images/000/040/307/medium/japanese-supermarket-p70745807_M_%281%29.jpg?2021" style={{"height":"200px","width":"100%","objectFit":"cover"}} />
-                        </div>
-                        <table style={{
-                            "width":"100%",
-                            "textAlign":"center"
-                        }}>
-                            <tbody>
-                                <tr>
-                                    <td style={
-                                        {
-                                            "backgroundColor": "rgb(0, 202, 0)"
-                                        }
-                                    }>
-                                        <Link href={"/store/"+store.code}>
-                                            <a style={
-                                                {
-                                                    "padding": "8px",
-                                                    "color": "white",
-                                                    "display":"block"
-                                                }
-                                            }>Masuk ke Toko</a>
-                                        </Link>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <Layout title={ name } hideFooter="true" isShop="1">
+        <div className="content mb-2">
+            <div className="text-center p-3">
+                <img src="https://brebes-social.id/images/logo/cira-blue-transparent.webp" className="imaged" style={
+                    {
+                        "width": "45px"
+                    }
+                } />
+                <div style={
+                    {
+                        "fontWeight":"bold",
+                        "fontSize":"16px"
+                    }
+                } className="pt-2">{store.name}</div>
+            </div>
+            <hr />
+            <div style={{"padding":"10px"}}>
+                <div>
+                        <div style={{ "color": "grey", "fontSize":"12px" }}>{store.desa && 'Desa ' + store.desa}{store.desa && store.kecamatan ? ', ' : 'Alamat tidak diketahui'} {store.kecamatan && 'Kec. '+store.kecamatan}<StoreStatus code={store.status} /></div>
                     </div>
+                    <div style={{"padding":"2px", "marginTop":"8px"}}><hr /></div>
+                            <div style={{"padding":"5px", "fontSize":"12px"}}>{store.bio}</div>
+                        </div>
+                    </div>
+        <hr /><hr />
+        <div style={
+            {
+                "backgroundColor":"white",
+                "padding":"10px",
+                "fontWeight":"bold"
+            }
+        } >Produk Toko</div>
+        <hr />
+        <ProductList store_code={code} />
     </Layout>
   );
 };
