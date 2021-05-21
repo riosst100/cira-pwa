@@ -38,7 +38,7 @@ function Member({ member }) {
         }>
             <Link href={"/member/"+member._id}>
                 <a>
-                    <div className="content">
+                    <div className="content p-2">
                         <img src={!member.profile_img && defaultProfilePicture(member._id)} className="imaged" style={
                             {
                                 "width": "40px",

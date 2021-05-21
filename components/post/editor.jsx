@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCurrentUser } from '@/hooks/index';
 import { useRouter } from 'next/router'
+import NProgress from '@/components/nprogress';
 
 export default function PostEditor() {
   const [user] = useCurrentUser();
@@ -18,6 +19,10 @@ export default function PostEditor() {
 
   async function hanldeSubmit(e) {
     e.preventDefault();
+
+    // Start progress bar
+    NProgress.start();
+
     const body = {
       content: e.currentTarget.content.value,
     };
@@ -39,7 +44,7 @@ export default function PostEditor() {
 
   return (
     <>
-      <div className="flex items-center justify-center" style={{"margin":"10px"}}>
+      <div className="flex items-center justify-center">
       <form onSubmit={hanldeSubmit} className="w-full bg-white shadow-md p-2"  autoComplete="off">
         <label htmlFor="name">
           <textarea

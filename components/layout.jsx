@@ -22,7 +22,7 @@ export default function Layout(props) {
         </div>
         <BottomMenu />
       </div>
-      <Footer />
+      {props.hideFooter ? '' : <Footer />}
     </div>
   )
 }

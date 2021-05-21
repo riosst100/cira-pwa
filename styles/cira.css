@@ -220,6 +220,10 @@ body {
     height: 80px;
     background: #369bff; */
   }
+  .btn {
+    border-radius: .25rem;
+    font-weight: 700;
+  }
   .home-banner {
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);
     padding: 0px;

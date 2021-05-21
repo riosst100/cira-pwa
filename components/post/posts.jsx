@@ -4,43 +4,77 @@ import Link from 'next/link';
 import { useUser } from '@/hooks/index';
 import fetcher from '@/lib/fetch';
 import { defaultProfilePicture } from '@/lib/default';
+import { ChatboxEllipsesOutline } from 'react-ionicons'
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function Post({ post }) {
   const user = useUser(post.creatorId);
   return (
     <>
-      <style jsx>
-        {`
-          .post {
-            box-shadow: 0 2px 2px rgba(0,0,0,0.12);
-            padding: 8px;
-            margin-bottom: 1rem;
-            transition: box-shadow 0.2s ease 0s;
-            background-color: white;
-            cursor: pointer;
-          }
-          small {
-            color: #777;
-          }
-        `}
-      </style>
-      <div className="post">
-        {user && (
-          <div style={{"padding":"5px"}}>
-            <Link href={`/user/${user._id}`}>
-              <a style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <img width="32" height="32" style={{ borderRadius: '50%', objectFit: 'cover', marginRight: '0.3rem' }} src={user.profilePicture || defaultProfilePicture(user._id)} alt={user.name} />
-                <b>{user.name}</b>
-              </a>
+      <Link href={"/"+ post._id}>
+                <a style={
+                {
+                    "backgroundColor": "white",
+                    "borderRadius": "5px",
+                    "display": "block",
+                    "marginBottom":"15px"
+                }
+                }>
+                    <div className="content">
+                        <div className="pl-2 pr-2 pt-2">
+                            <img src={user && !user.profile_img && defaultProfilePicture(user._id)} className="imaged" style={
+                                {
+                                    "width": "40px",
+                                    "position": "absolute"
+                                }
+                            }
+                            />
+                            <div style={{ "paddingRight": "5px"}}>
+                                <div style={{ "marginLeft": "50px", "fontWeight":"500" }}>{user && user.name}</div>
+                                <div style={{ "marginLeft": "50px", "color": "grey", "fontSize":"12px" }}>{new Date(post.createdAt).toLocaleString()}</div>
+                            </div>
+                            <div style={{"padding":"2px", "marginTop":"8px"}}><hr /></div>
+                            {/* <div style={{"padding":"5px"}}>{item.bio}</div> */}
+                        </div>
+                        <div className="pl-3 pr-3">
+                          {post.content}
+                        </div>
+                        {/* <div>
+                            <img src="http://d20aeo683mqd6t.cloudfront.net/articles/title_images/000/040/307/medium/japanese-supermarket-p70745807_M_%281%29.jpg?2021" style={{"height":"200px","width":"100%","objectFit":"cover"}} />
+                        </div> */}
+                        <div style={{"padding":"8px"}}>
+                            <table style={{
+                                "width":"100%",
+                                "textAlign":"center"
+                            }}>
+                                <tbody>
+                                    <tr>
+                                        <td style={
+                                            {
+                                                "backgroundColor": "rgb(0, 202, 0)"
+                                            }
+                                        }>
+                                            <Link href={"/store/"}>
+                                                <a className="bg" style={
+                                                    {
+                                                        "padding": "8px",
+                                                        "color": "white",
+                                                        "display":"block"
+                                                    }
+                                                }><ChatboxEllipsesOutline
+                                                color={'white'} 
+                                                height="22px"
+                                                width="22px"
+                                            /> <span style={{ "marginLeft": "5px" }}>Komentar</span></a>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </a>
             </Link>
-          </div>
-        )}
-        <hr></hr>
-        <div style={{"padding":"8px"}}>
-          {post.content}
-        </div>
-        <small>{new Date(post.createdAt).toLocaleString()}</small>
-      </div>
     </>
   );
 }
@@ -81,14 +115,22 @@ export default function Posts({ creatorId }) {
     data, error, size, setSize,
   } = usePostPages({ creatorId });
 
+  const skeleton = (
+    <>
+      <SkeletonTheme color="#e5e5e5" highlightColor="#e9e9e9">
+        <Skeleton height={100} />
+      </SkeletonTheme>
+    </>
+  );
+
   const posts = data ? data.reduce((acc, val) => [...acc, ...val.posts], []) : [];
   const isLoadingInitialData = !data && !error;
   const isLoadingMore = isLoadingInitialData || (data && typeof data[size - 1] === 'undefined');
   const isEmpty = data?.[0].posts?.length === 0;
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.posts.length < PAGE_SIZE);
 
-  return (
-    <div style={{ "margin":"10px"}}>
+  return !data ? <div className="text-center"><img src="/icon/loading.webp" style={{"width":"30px"}}/><div className="mt-2" style={{"color":"#7f7f7f"}}>Memuat info terbaru...</div></div> : (
+    <div>
       {posts.map((post) => <Post key={post._id} post={post} />)}
       {!isReachingEnd && (
       <button
