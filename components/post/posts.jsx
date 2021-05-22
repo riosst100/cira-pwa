@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useUser } from '@/hooks/index';
 import fetcher from '@/lib/fetch';
 import { defaultProfilePicture } from '@/lib/default';
-import { ChatboxEllipsesOutline } from 'react-ionicons'
+import { ChatboxOutline } from 'react-ionicons'
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function Post({ post }) {
@@ -15,9 +15,8 @@ function Post({ post }) {
                 <a style={
                 {
                     "backgroundColor": "white",
-                    "borderRadius": "5px",
                     "display": "block",
-                    "marginBottom":"15px"
+                    "marginBottom":"5px"
                 }
                 }>
                     <div className="content">
@@ -33,7 +32,7 @@ function Post({ post }) {
                                 <div style={{ "marginLeft": "50px", "fontWeight":"500" }}>{user && user.name}</div>
                                 <div style={{ "marginLeft": "50px", "color": "grey", "fontSize":"12px" }}>{new Date(post.createdAt).toLocaleString()}</div>
                             </div>
-                            <div style={{"padding":"2px", "marginTop":"8px"}}><hr /></div>
+                            <div style={{"padding":"2px", "marginTop":"6px", "marginBottom":"2px"}}><hr /></div>
                             {/* <div style={{"padding":"5px"}}>{item.bio}</div> */}
                         </div>
                         <div className="pl-3 pr-3">
@@ -51,21 +50,22 @@ function Post({ post }) {
                                     <tr>
                                         <td style={
                                             {
-                                                "backgroundColor": "rgb(0, 202, 0)"
+                                              "backgroundColor": "#f1f2f6",
+                                              "borderRadius": "100px"
                                             }
                                         }>
                                             <Link href={"/store/"}>
-                                                <a className="bg" style={
+                                                <a style={
                                                     {
-                                                        "padding": "8px",
-                                                        "color": "white",
+                                                        "padding": "5px",
+                                                        "color": "#5b5c60",
                                                         "display":"block"
                                                     }
-                                                }><ChatboxEllipsesOutline
-                                                color={'white'} 
-                                                height="22px"
-                                                width="22px"
-                                            /> <span style={{ "marginLeft": "5px" }}>Komentar</span></a>
+                                                }><ChatboxOutline
+                                                color={'#5b5c60'} 
+                                                height="20px"
+                                                width="20px"
+                                            /> <span style={{ "marginLeft": "3px" }}><b>0</b> Komentar</span></a>
                                             </Link>
                                         </td>
                                     </tr>

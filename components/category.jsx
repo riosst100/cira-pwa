@@ -17,11 +17,10 @@ function DashboardItem({ item }) {
         <Link href={"/"+ item.code}>
           <a style={
             {
-              "backgroundColor": "white",
+              "backgroundColor": "#f1f2f6",
               "padding": "10px 15px",
               "borderRadius": "5px",
-              "display": "block",
-              "boxShadow":"0 1px 3px 0 rgb(0 0 0 / 12%)"
+              "display": "block"
             }
           }>
             <div style={
@@ -37,8 +36,7 @@ function DashboardItem({ item }) {
             </div>
             <div style={
               {
-                "color": "#369bff",
-                "fontWeight": 500,
+                "color": "rgb(91, 92, 96)",
                 "fontSize": "12px",
                 "paddingTop": "5px"
               }
@@ -132,7 +130,8 @@ export default function CategoryList()
         "margin": "0 auto",
         "borderCollapse": "separate",
         "borderSpacing": "8px",
-        "width": "100%"
+        "width": "100%",
+        "backgroundColor":"white"
       }
     }>
       <tbody>

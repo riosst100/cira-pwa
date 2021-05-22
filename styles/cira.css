@@ -3,7 +3,7 @@ body {
     font-size: 14px;
     letter-spacing: 0.004em;
     color: black;
-    background: #f0f2f5;
+    background: #ffffff;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -225,7 +225,7 @@ body {
     font-weight: 700;
   }
   .home-banner {
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%);
+    /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%); */
     padding: 0px;
     position: relative;
     z-index: 1;
@@ -235,7 +235,7 @@ body {
   }
   .content {
     background: #ffffff;
-    box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+    /* box-shadow: 0 1px 2px rgb(0 0 0 / 20%); */
     /* border-radius: 10px; */
     /* padding: 10px 10px 10px 10px; */
     /* position: relative; */
@@ -256,13 +256,12 @@ body {
   
   /* Footer */
   .footer {
-    margin-top: 10px;
+    margin-top: 5px;
     border-top: 1px solid #DCDCE9;
     padding: 20px;
     font-size: 12px;
     text-align: center;
     line-height: 1.2em;
-    background: #FFF;
   }
   .footer .footer-title {
     font-weight: 500;

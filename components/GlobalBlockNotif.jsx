@@ -6,20 +6,23 @@ export default function GlobalBlockNotif({ user }) {
   let loginStatus = '';
 
   if (!user) {
-    loginStatus = (<div className="section m-2" style={{
-        "boxShadow": "rgb(0 0 0 / 12%) 0px 1px 3px 0px"
-    }}>
-    <div className="content text-center">
+    loginStatus = (<div className="section mt-1 mb-1">
+    <div className="content text-center p-1" style={
+      {
+        "borderRadius":"0px",
+        "borderTop": "1px solid #DCDCE9",
+        "borderBottom": "1px solid #DCDCE9"
+      }
+    }>
         <div style={{
             "background": "url(https://brebes-social.id/images/overlay/idul-fitri.webp)",
             "backgroundSize": "contain",
-            "backgroundColor": "white",
-            "color":"white"
+            "backgroundRepeat": "no-repeat"
         }}>
-            <div style={{"backgroundColor":"#009effb0"}}>
-      <div className="p-2" style={{"textShadow":"1px 1px 2px #00000085"}}>
+      <div className="p-1">
+        <marquee>
           Selamat hari raya Idul Fitri 1442 H!
-      </div>
+        </marquee>
       </div>
       </div>
     </div>
