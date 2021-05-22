@@ -21,8 +21,9 @@ export default function Layout(props) {
             {props.children}
           </div>
           <BottomMenu />
+          {props.hideFooter ? '' : <Footer />}
           </body>
-        {props.hideFooter ? '' : <Footer />}
+        
     </div>
   )
 }
