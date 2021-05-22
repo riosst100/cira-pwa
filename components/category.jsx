@@ -124,7 +124,7 @@ export default function CategoryList()
   );
 
   return (
-    <SkeletonTheme color="#e5e5e5" highlightColor="#e9e9e9">
+    <SkeletonTheme color="#f1f2f6" highlightColor="#ffffff">
     <table style={
       { 
         "margin": "0 auto",
