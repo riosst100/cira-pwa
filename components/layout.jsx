@@ -15,14 +15,15 @@ export default function Layout(props) {
           <link rel="icon" href={favicon} />
           <link rel="manifest" href="/manifest.json"></link>
         </Head>
-        <body style={props.backgroundColor && {"backgroundColor":props.backgroundColor}}>
+        {
+          props.backgroundColor && <style jsx>{`body { background-color: `+props.backgroundColor+`; }`}</style>
+        }
           <Navbar user={user} />
           <div style={{ padding: '0px' }}>
             {props.children}
           </div>
           <BottomMenu />
           {props.hideFooter ? '' : <Footer />}
-          </body>
         
     </div>
   )
