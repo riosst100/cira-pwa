@@ -19,8 +19,8 @@ const IndexPage = () => {
 
   return (
     <Layout title="Cira App">
-      <GlobalBlockNotif />
       <PageBanner page="home" />
+      <GlobalBlockNotif />
       <LoginRegister user={user} />
       <Category />
     </Layout>

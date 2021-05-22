@@ -19,6 +19,7 @@ export default function Feed() {
 
   return (
       <Layout title="Informasi" hideFooter="true">
+        <div style={{"backgroundColor":"#bcbfc4"}}>
           <div style={{"margin": "10px", "textAlign":"center"}}>
             <Link href="/feed/create">
               <a>
@@ -30,6 +31,7 @@ export default function Feed() {
             {msg && <div className="success-msg">{msg}</div>}
           </div>
           <Posts />
+        </div>
       </Layout>
   )
 }
