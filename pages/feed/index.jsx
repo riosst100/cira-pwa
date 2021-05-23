@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useCurrentUser } from '@/hooks/index';
 import Posts from '@/components/post/posts';
 import Layout from '@/components/layout'
-import PageBanner from '@/components/pageBanner'
 import Link from 'next/link'
 import { useRouter } from "next/router"
 
@@ -19,7 +18,7 @@ export default function Feed() {
 
   return (
       <Layout title="Informasi" hideFooter="true" backgroundColor="#bcbfc4">
-          <div style={{"margin": "10px", "textAlign":"center"}}>
+          <div style={{"backgroundColor": "white", "textAlign":"center"}} className="p-2 mb-1">
             <Link href="/feed/create">
               <a>
                 <button className="mr-5 bg-primary hover:bg-green-700 text-white font-bold py-1 px-5 rounded focus:outline-none focus:shadow-outline">

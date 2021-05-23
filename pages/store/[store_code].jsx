@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from '@/components/layoutSub'
-import Link from 'next/link'
 import { extractStore } from '@/lib/api-helpers';
 import { findStoreByCode } from '@/db/index';
 import { all } from '@/middlewares/index';
@@ -52,7 +51,6 @@ export async function getServerSideProps(context) {
     await all.run(context.req, context.res);
     const store = extractStore(await findStoreByCode(context.req.db, context.params.store_code));
     if (!store) context.res.statusCode = 404;
-    console.log(store)
     return { props: { store } };
 }
 

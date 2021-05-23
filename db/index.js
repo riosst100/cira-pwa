@@ -1,5 +1,5 @@
 export * from './user';
-export * from './post';
+export * from './feed';
 export * from './token';
 export * from './dashboard-item';
 export * from './member';

@@ -7,7 +7,7 @@ import { defaultProfilePicture } from '@/lib/default';
 import { ChatboxOutline } from 'react-ionicons'
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-function Post({ post }) {
+function Feed({ post }) {
   const user = useUser(post.creatorId);
   return (
     <>
@@ -110,7 +110,7 @@ export function usePostPages({ creatorId } = {}) {
   });
 }
 
-export default function Posts({ creatorId }) {
+export default function FeedList({ creatorId }) {
   const {
     data, error, size, setSize,
   } = usePostPages({ creatorId });
@@ -131,7 +131,7 @@ export default function Posts({ creatorId }) {
 
   return !data ? <div className="text-center"><img src="/icon/loading.webp" style={{"width":"30px"}}/><div className="mt-2" style={{"color":"#7f7f7f"}}>Memuat info terbaru...</div></div> : (
     <div>
-      {posts.map((post) => <Post key={post._id} post={post} />)}
+      {posts.map((post) => <Feed key={post._id} post={post} />)}
       {!isReachingEnd && (
       <button
         type="button"
