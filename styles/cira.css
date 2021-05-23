@@ -20,7 +20,6 @@ body {
     margin-top: 10px;
   }
   .header {
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 32%);
     height: 45px;
     display: flex;
     justify-content: center;
@@ -220,9 +219,17 @@ body {
     height: 80px;
     background: #369bff; */
   }
+  textarea {
+    resize: none !important;
+    border: 1px solid #e5e7eb;
+  }
   .btn {
     border-radius: .25rem;
     font-weight: 700;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
   .home-banner {
     /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 9%); */
