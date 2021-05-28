@@ -6,3 +6,10 @@ export async function getMember(db) {
     // .limit(limit || 10)
     .toArray();
 }
+
+export async function searchMember(db, q) {
+  return db
+    .collection('users')
+    .find()
+    .toArray();
+}

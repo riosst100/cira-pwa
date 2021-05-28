@@ -4,25 +4,28 @@ import Link from 'next/link';
 import fetcher from '@/lib/fetch';
 import { defaultProfilePicture } from '@/lib/default';
 
-export default function MemberList() {
-    const {
-        data, error, size, setSize,
-    } = getMember();
-
+export default function SearchMember({ query }) 
+{
+    const { data } = getMember(query);
     const members = data ? data.reduce((acc, val) => [...acc, ...val.member], []) : [];
 
     return (
         <>
+            <div className="p-2">
+                <b>Pengguna</b>
+                <span style={{"float":"right","color":"grey","fontSize":"12px", "paddingTop":"2px"}}>{members.length} hasil</span>
+            </div>
+            <hr /><hr />
             {members.map((member) => <Member key={member._id} member={member} />)}
         </>
-    );
+    )
 }
 
-export function getMember() {
+export function getMember(query) {
     return useSWRInfinite(() => {
-      return `/api/member`;
+      return `/api/member/search?q=${query}`;
     }, fetcher, {
-      refreshInterval: 10000,
+      refreshInterval: 10000
     });
 }
 

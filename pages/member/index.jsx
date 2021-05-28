@@ -1,4 +1,3 @@
-import { useCurrentUser } from '@/hooks/index';
 import MemberList from '@/components/member/list';
 import Layout from '@/components/layoutSub'
 

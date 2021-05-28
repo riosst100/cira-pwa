@@ -263,7 +263,7 @@ body {
   
   /* Footer */
   .footer {
-    margin-top: 5px;
+    /* margin-top: 5px; */
     border-top: 1px solid #DCDCE9;
     padding: 20px;
     font-size: 12px;
