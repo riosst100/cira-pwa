@@ -1,18 +1,18 @@
 import nc from 'next-connect';
 import { all } from '@/middlewares/index';
-import { getProduct, findProductById } from '@/db/index';
+import { getStoreGrouping } from '@/db/index';
 
 const handler = nc();
 
 handler.use(all);
 
 handler.get(async (req, res) => {
-  const product = await findProductById(
+  const carts = await getStoreGrouping(
     req.db,
-    req.query.id
+    req.query.cart_id
   );
 
-  res.send({ product });
+  res.send({ carts });
 });
 
 export default handler;

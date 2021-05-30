@@ -23,7 +23,7 @@ export default function Menu() {
         <Layout title="Cira App">
             {!user ? (
                 <>
-                    <div style={{ "marginTop": "5px" }}>
+                    <div>
                             <Link href="/help">
                                 <a className="p-3 block" style={{"backgroundColor":"white","color":"#27173E",
                                 "cursor": "pointer"}}>

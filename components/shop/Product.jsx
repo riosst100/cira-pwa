@@ -5,30 +5,34 @@ import fetcher from '@/lib/fetch';
 import { serverURL } from '@/lib/core-data';
 import Skeleton from "react-loading-skeleton";
 
-export default function ProductList({ store_code }) {
-    const { data } = getProduct();
+export default function SearchProduct({ query }) 
+{
+    const { data } = searchProduct(query);
     const product = data ? data.reduce((acc, val) => [...acc, ...val.product], []) : [];
 
     return (
         <>
-            <div>
-                <div style={{"textAlign":"center", "paddingTop":"5px"}}>
-                    {
-                        product ? (
-                            product.map((item) => 
-                            <Product key={item._id} item={item}/>
-                        )
-                        ) : <Skeleton />
-                    }
-                </div>
+            <hr />
+            <div className="p-2">
+                <b>Produk</b>
+                <span style={{"float":"right","color":"grey","fontSize":"12px", "paddingTop":"2px"}}>{product.length} hasil</span>
             </div>
+            <hr />
+            {
+                product ? (
+                        
+                        product.map((item) => 
+                        <Product key={item._id} item={item}/>
+                        )
+                ) : <Skeleton />
+            }
         </>
     )
 }
 
-export function getProduct() {
+export function searchProduct(query) {
     return useSWRInfinite(() => {
-        return `/api/shop/product/all`;
+        return `/api/shop/product/search?q=${query}`;
     }, fetcher, {});
 }
 

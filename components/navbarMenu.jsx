@@ -23,13 +23,15 @@ export default function NavbarMenu({ user }) {
         </Link>
       </div>
       <div className="right">
-        <a href="app-notifications.html" className="headerButton">
-          <SearchOutline
-            color={'#ffffff'} 
-            height="25px"
-            width="25px"
-          />
-        </a>
+        <Link href="/search">
+          <a className="headerButton">
+            <SearchOutline
+              color={'#ffffff'} 
+              height="25px"
+              width="25px"
+            />
+          </a>
+        </Link>
         {!user ? (
           <>
             <Link href="/login">

@@ -1,24 +1,26 @@
 import Layout from '@/components/layoutSub'
-import { HeadsetOutline } from 'react-ionicons'
+import { useRouter } from "next/router";
 
 export default function SearchIndex() {
+    const preventDefault = f => e => {
+        e.preventDefault()
+        f(e)
+    }
+    const router = useRouter()
+    const handleSubmit = preventDefault((e) => {
+        const query = e.currentTarget.query.value;
+        router.push({
+          pathname: '/search/result',
+          query: {q: query},
+        })
+    })
     return (
-        <Layout title="Bantuan">
-            <div style={{ "marginTop": "5px" }}>
-                <div className="section" style={
-                    {
-                        "color":"#27173E",
-                        "cursor": "pointer"
-                    }
-                }>
-                    <div className="p-3" style={{"backgroundColor":"white"}}>
-                        <HeadsetOutline
-                            color={'#27173E'} 
-                            height="22px"
-                            width="22px"
-                        /> <span style={{ "marginLeft": "5px" }}>Live Chat CS</span>
-                    </div>
-                </div>
+        <Layout title="Pencarian">
+            <div className="p-2">
+                <form onSubmit={handleSubmit}> 
+                    <input type="text" name="query" />
+                    <button className="btn bg-primary">Cari</button>
+                </form>
             </div>
         </Layout>
     )
