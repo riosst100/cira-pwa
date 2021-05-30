@@ -1,14 +1,41 @@
 import React from 'react';
 import Layout from '@/components/layoutSub'
 import Link from 'next/link'
-import { excludeField } from '@/lib/api-helpers';
+import { extractData } from '@/lib/api-helpers';
 import { findProductByLink } from '@/db/index';
 import { all } from '@/middlewares/index';
 import ProductList from '@/components/shop/ProductList'
+import { useCurrentUser } from '@/hooks/index';
+import { useRouter } from 'next/router'
+import NProgress from '@/components/nprogress';
 
-export default function ProductDetail({product}) {
+export default function ProductDetail({product}) 
+{
   if (!product) return <Error statusCode={404} />;
   const { name, description, price, store_code } = product || {};
+
+  async function hanldeSubmit(e) {
+    e.preventDefault();
+
+    // Start progress bar
+    NProgress.start();
+
+    const body = {
+      store_id: product.store_id,
+      product_id: product._id
+    };
+    // if (!e.currentTarget.content.value) return;
+    // e.currentTarget.content.value = '';
+    const res = await fetch('/api/shop/cart/add-product', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (res.ok) {
+      NProgress.done();
+    }
+  }
+
   return (
     <Layout title="Detail Produk" hideFooter="true" isShop="1">
       <div style={{"backgroundColor":"white"}}>
@@ -86,7 +113,7 @@ export default function ProductDetail({product}) {
             }
           } >
             <button className="btn bg-primary p-2 pl-4 pr-4 mr-2" style={{"width":"35%"}}>Beli Sekarang</button>
-            <button className="btn bg-primary p-2 pl-4 pr-4" style={{"width":"60%"}}>Tambahkan ke Keranjang</button>
+            <button onClick={hanldeSubmit} className="btn bg-primary p-2 pl-4 pr-4" style={{"width":"60%"}}>Tambahkan ke Keranjang</button>
           </div>
         </div>
     </Layout>
@@ -95,7 +122,7 @@ export default function ProductDetail({product}) {
 
 export async function getServerSideProps(context) {
     await all.run(context.req, context.res);
-    const product = excludeField(await findProductByLink(context.req.db, context.params.link));
+    const product = extractData(await findProductByLink(context.req.db, context.params.link));
     if (!product) context.res.statusCode = 404;
     return {
         props: { product }

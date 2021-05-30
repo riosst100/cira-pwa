@@ -10,12 +10,13 @@ export default function SearchMember({ query })
     const members = data ? data.reduce((acc, val) => [...acc, ...val.member], []) : [];
 
     return (
-        <>
+        <> 
+            <hr />
             <div className="p-2">
                 <b>Pengguna</b>
                 <span style={{"float":"right","color":"grey","fontSize":"12px", "paddingTop":"2px"}}>{members.length} hasil</span>
             </div>
-            <hr /><hr />
+            <hr />
             {members.map((member) => <Member key={member._id} member={member} />)}
         </>
     )

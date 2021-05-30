@@ -10,6 +10,6 @@ export async function getMember(db) {
 export async function searchMember(db, q) {
   return db
     .collection('users')
-    .find()
+    .find({"name": new RegExp(".*"+q+".*", "i")})
     .toArray();
 }

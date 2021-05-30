@@ -1,19 +1,20 @@
 import Layout from '@/components/layoutSub'
 import { useRouter } from "next/router";
 import SearchMember from '@/components/Member';
+import SearchProduct from '@/components/shop/Product'
+import SearchStore from '@/components/shop/Store'
 
 export default function SearchResult() {
     const { query } = useRouter();
+    
     return (
         <Layout title="Hasil Pencarian">
             <div>
                 <div className="p-2">Hasil Pencarian <b>{query.q}</b></div>
                 <hr /><hr />
                 <SearchMember query={query.q} />
-                <div className="p-2"><b>Produk</b><span style={{"float":"right","color":"grey","fontSize":"12px", "paddingTop":"2px"}}>100 hasil</span></div>
-                <hr /><hr />
-                <div className="p-2"><b>Toko</b><span style={{"float":"right","color":"grey","fontSize":"12px", "paddingTop":"2px"}}>100 hasil</span></div>
-                <hr />
+                <SearchProduct query={query.q} />
+                <SearchStore query={query.q} />
             </div>
         </Layout>
     )

@@ -9,7 +9,7 @@ import Error from 'next/error';
 export default function StoreListing({category}) {
   if (!category) return <Error statusCode={404} />;
   return (
-    <Layout title={"Belanja "+category.label} >
+    <Layout title={"Belanja "+category.label} isShop="1">
       <ShopCategory />
     </Layout>
   );

@@ -6,3 +6,4 @@ export * from './member';
 export * from './shop/category';
 export * from './shop/store';
 export * from './shop/product';
+export * from './shop/cart';
