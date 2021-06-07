@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.riosanz.ciracira",
+            "sha256_cert_fingerprints": [
+                "A7:B2:E6:84:E1:57:73:0F:64:FF:E8:CC:7D:28:C3:7A:AC:38:2E:18:19:29:25:85:39:35:92:D1:60:7A:F1:09"
+            ]
+        }
+    }
+]

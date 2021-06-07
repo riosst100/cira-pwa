@@ -15,9 +15,9 @@ export default function Layout(props) {
           <link rel="icon" href={favicon} />
           <link rel="manifest" href="/manifest.json"></link>
         </Head>
-        {
+        {/* {
           props.backgroundColor && <style>{`body { background-color: `+props.backgroundColor+`; }`}</style>
-        }
+        } */}
           <Navbar user={user} />
           <div style={{ padding: '0px' }}>
             {props.children}
