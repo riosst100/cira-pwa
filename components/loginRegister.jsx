@@ -6,7 +6,7 @@ import fetcher from '@/lib/fetch';
 export default function LoginRegister({ user }) {
   const { data } = useSWR('/api/user', fetcher);
   const loginRegister = (
-    <div className="section mt-3 ml-2 mr-2" style={{"border": "1px solid #e9e9f1"}}>
+    <div className="section mb-1 mt-1" style={{"border": "1px solid #e9e9f1"}}>
       <div className="content text-center p-2">
         <div><b>Selamat Datang di Cira App!</b></div>
         <div className="pb-2"><small>Silahkan Daftar atau Masuk jika sudah terdaftar.</small></div>
