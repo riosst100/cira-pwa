@@ -27,7 +27,7 @@ export default function PageBanner({ page }) {
                 {/* style={{"display": isImageReady ? "block" : "none !important"}} */}
                 <img className="home-banner" src={banner} width={"100%"} style={{"height":"150px"}} />
             </div>
-            <div className="content pt-2 pb-2 mb-1 mt-1 text-center">
+            <div className="content pt-2 pb-2 mt-1 text-center">
                 <div><button onClick={ handleClick } className="btn bg-primary">TAMPILKAN IKLAN VIDEO GOOGLE ADMOB</button></div>
             </div>
         </>
