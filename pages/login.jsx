@@ -32,12 +32,27 @@ const LoginPage = () => {
     });
     if (res.status === 200) {
       const userObj = await res.json();
+      app.updateFcmToken(userObj.user._id);
       mutate(userObj);
     } else {
       NProgress.done();
 
       setErrorMsg('Incorrect username or password. Try again!');
     }
+  }
+
+  async function updateFcmToken(fcm_token, member_id) 
+  {
+    const body = {
+      member_id: member_id,
+      token: fcm_token
+    };
+    
+    const res = await fetch('/api/member/updateToken', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
   }
 
   return (
