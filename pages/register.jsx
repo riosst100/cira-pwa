@@ -36,7 +36,11 @@ export default function SignupPage() {
     });
     if (res.status === 201) {
       const userObj = await res.json();
-      app.updateFcmToken(userObj.user._id);
+      var ua = navigator.userAgent.toLowerCase();
+      var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+      if(isAndroid) {
+        app.updateFcmToken(userObj.user._id);
+      }
       mutate(userObj);
     } else {
       // Start progress bar
