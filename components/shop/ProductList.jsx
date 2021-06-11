@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react';
 import { useSWRInfinite } from 'swr';
 import fetcher from '@/lib/fetch';
-import { serverURL } from '@/lib/core-data';
 import Skeleton from "react-loading-skeleton";
 
 export default function ProductList({ store_code }) {
@@ -57,7 +56,7 @@ function Product({ item }) {
                     "paddingTop": "4px"
                     }
                 }>
-                    <img src={ serverURL + "/images/icon/" + item.sku + ".webp"} style={
+                    <img src={ "/images/icon/" + item.sku + ".webp"} style={
                     {
                         "width": "50px"
                     }
