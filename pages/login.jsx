@@ -41,20 +41,6 @@ const LoginPage = () => {
     }
   }
 
-  async function updateFcmToken(fcm_token, member_id) 
-  {
-    const body = {
-      member_id: member_id,
-      token: fcm_token
-    };
-    
-    const res = await fetch('/api/member/updateToken', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-  }
-
   return (
     <Layout title="Login Member">
     <div className="flex items-center justify-center">
