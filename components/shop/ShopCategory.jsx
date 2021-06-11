@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react';
 import { useSWRInfinite } from 'swr';
 import fetcher from '@/lib/fetch';
-import { serverURL } from '@/lib/core-data';
 import Skeleton from "react-loading-skeleton";
 
 export default function ShopCategory() {
@@ -89,7 +88,7 @@ function Category({ item }) {
                     "paddingTop": "4px"
                     }
                 }>
-                    <img src={ serverURL + "/images/icon/" + item.code + ".webp"} style={
+                    <img src={ "/images/icon/" + item.code + ".webp"} style={
                     {
                         "width": "50px"
                     }

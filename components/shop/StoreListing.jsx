@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react';
 import { useSWRInfinite } from 'swr';
 import fetcher from '@/lib/fetch';
-import { serverURL } from '@/lib/core-data';
 import Skeleton from "react-loading-skeleton";
 
 export default function StoreListing() {
