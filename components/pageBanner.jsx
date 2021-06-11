@@ -13,13 +13,12 @@ export default function PageBanner({ page }) {
     //     setIsImageReady(true)
     //     typeof onLoad === "function" && onLoad(e)
     //  }
-    const base_url = process.env.IMAGE_SERVER_URL;
-    let banner = base_url + "/images/banner/banner-cira.webp";
+    let banner = "/images/banner/banner-cira.webp";
     if (page == "travel") {
-        banner = base_url + "/images/banner/travel.webp";
+        banner = "/images/banner/travel.webp";
     }
     const handleClick = (e) => {
-        app.makeToast("OKE SIAP");
+        app.showVideoAds();
     }
     return (
         <>
@@ -28,7 +27,9 @@ export default function PageBanner({ page }) {
                 {/* style={{"display": isImageReady ? "block" : "none !important"}} */}
                 <img className="home-banner" src={banner} width={"100%"} style={{"height":"150px"}} />
             </div>
-            <div><button onClick={ handleClick }>TEST</button></div>
+            <div className="content pt-2 pb-2 mb-1 mt-1 text-center">
+                <div><button onClick={ handleClick } className="btn bg-primary">TAMPILKAN IKLAN VIDEO GOOGLE ADMOB</button></div>
+            </div>
         </>
     );
 }

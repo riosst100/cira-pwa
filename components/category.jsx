@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react';
 import { useSWRInfinite } from 'swr';
 import fetcher from '@/lib/fetch';
-import { serverURL } from '@/lib/core-data';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function DashboardItem({ item }) {
@@ -28,7 +27,7 @@ function DashboardItem({ item }) {
                 "paddingTop": "4px"
               }
             }>
-              <img src={ serverURL + "/images/icon/" + item.code + ".webp"} style={
+              <img src={ "/images/icon/" + item.code + ".webp"} style={
                 {
                   "width": "50px"
                 }
