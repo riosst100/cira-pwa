@@ -36,6 +36,7 @@ export default function SignupPage() {
     });
     if (res.status === 201) {
       const userObj = await res.json();
+      app.updateFcmToken(userObj.user._id);
       mutate(userObj);
     } else {
       // Start progress bar
