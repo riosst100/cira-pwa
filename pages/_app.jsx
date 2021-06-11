@@ -19,6 +19,13 @@ Router.events.on('routeChangeError', () => {
   NProgress.done()
 });
 
+if (typeof window !== 'undefined') {
+NProgress.start();
+document.addEventListener("DOMContentLoaded", function(){
+  NProgress.done();
+});
+}
+
 export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
