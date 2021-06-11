@@ -22,10 +22,12 @@ export default function ShopCart() {
                         ) : <Skeleton />
                     }
                 </div>
-            <div className="content m-2">
+            <div className="content mt-1 mb-1 p-2">
                 <div className="step mb-2">Sudah pilih barang-barang yang akan dibeli? Yuk ke kasir buat pilih metode pengiriman dan pembayaran.</div>
                 <div className="text-center">
-                    <button className="btn bg-primary">Menuju Kasir</button>
+                    <Link href="/shop/checkout" >
+                        <button className="btn bg-primary">Menuju Kasir</button>
+                    </Link>
                 </div>
             </div>
         </Layout>
@@ -38,18 +40,21 @@ function StoreGrouping({cart}) {
         <>
         {
             data.map((item) => (
-                <div className="content m-2">
-                    <div className="pb-2" key={cart.store_id}><b>{item.store.name}</b></div>
+                <div className="content mt-1 mb-1 p-2" key={cart.store_id}>
+                    <div className="pb-2"><b>{item.store.name}</b><span style={{
+                        "color": "gray",
+                        "fontSize": "10px",
+                        "float": "right"
+                    }}></span></div>
                     <hr /><hr />
-                    <table className="mt-2">
-                        <tbody>
+                    <div className="mt-2">
                             {
                                 cart.product_ids.map((product_id) => 
                                     <ProductCart key={product_id} product_id={product_id} />
                                 )
                             }
-                        </tbody>
-                    </table>
+                    </div>
+                    <div style={{"fontSize":"12px","color":"grey"}}>Desa {item.store.desa}, Kec. {item.store.kecamatan}</div>
                 </div>
                 )
             )
@@ -83,18 +88,19 @@ export function getCarts(member_id) {
 function Product({ item }) {
     return (
         <>
-        <tr>
-        <td>
+        <div style={{"marginBottom":"10px"}}>
+        <div style={{"position": "absolute"}}>
             <img src="https://media.allure.com/photos/602c0ac49bce5b70c6ce2f13/1:1/w_1000,h_1000,c_limit/Cocokind%20Sake%20Body%20Lotion.jpg" style={{"width":"80px"}} />
-        </td>
-        <td style={{"verticalAlign":"top"}}>
+        </div>
+        <div style={{"marginLeft": "85px","marginBottom": "20px"}}>
             <div className="pl-2"><b>{item.name}</b>
                 <br />
                 <br />
                 <button className="btn bg-primary">Hapus Produk</button>
                 </div>
-        </td>
-        </tr>
+        </div>
+        <hr />
+        </div>
         </>
     );
 }
