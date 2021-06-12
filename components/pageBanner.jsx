@@ -1,5 +1,4 @@
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { useEffect, useState } from 'react'
+import { isAndroid } from '@/lib/helpers'
 
 export default function PageBanner({ page }) {
     // const [isImageReady, setIsImageReady] = useState(false);

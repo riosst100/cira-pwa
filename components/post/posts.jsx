@@ -129,7 +129,7 @@ export default function Posts({ creatorId }) {
   const isEmpty = data?.[0].posts?.length === 0;
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.posts.length < PAGE_SIZE);
 
-  return !data ? <div className="text-center"><img src="/icon/loading.webp" style={{"width":"30px"}}/><div className="mt-2" style={{"color":"#7f7f7f"}}>Memuat info terbaru...</div></div> : (
+  return !data ? <div className="text-center"><img src="/images/icon/loading.webp" style={{"width":"30px"}}/><div className="mt-2" style={{"color":"#7f7f7f"}}>Memuat info terbaru...</div></div> : (
     <div>
       {posts.map((post) => <Post key={post._id} post={post} />)}
       {!isReachingEnd && (
