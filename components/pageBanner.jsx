@@ -28,7 +28,8 @@ export default function PageBanner({ page }) {
                 <img className="home-banner" src={banner} width={"100%"} style={{"height":"150px"}} />
             </div>
             <div className="content pt-2 pb-2 mt-1 mb-1 text-center">
-                <div><button onClick={ handleClick } className="btn bg-primary">TAMPILKAN IKLAN VIDEO</button></div>
+                <div><b>Klaim Hadiah Harian</b></div>
+                <div onClick={ handleClick }><img src="/images/icon/gif/gift.gif" style={{"width":"70px"}}/></div>
             </div>
         </>
     );

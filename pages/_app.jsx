@@ -21,9 +21,9 @@ Router.events.on('routeChangeError', () => {
 
 if (typeof window !== 'undefined') {
 NProgress.start();
-document.addEventListener("DOMContentLoaded", function(){
+timeout = setTimeout(() => {
   NProgress.done();
-});
+}, 1000);
 }
 
 export default function MyApp({ Component, pageProps }) {
