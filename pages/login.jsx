@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useCurrentUser } from '@/hooks/index';
 import NProgress from '@/components/nprogress';
 import { logoBlueTrans } from '@/lib/core-data';
+import { isAndroid } from '@/lib/helpers';
 
 const LoginPage = () => {
   const router = useRouter();
@@ -32,9 +33,7 @@ const LoginPage = () => {
     });
     if (res.status === 200) {
       const userObj = await res.json();
-      var ua = navigator.userAgent.toLowerCase();
-      var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-      if(isAndroid) {
+      if(isAndroid()) {
         app.updateFcmToken(userObj.user._id);
       }
       mutate(userObj);
