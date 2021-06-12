@@ -27,9 +27,20 @@ export default function PageBanner({ page }) {
                 {/* style={{"display": isImageReady ? "block" : "none !important"}} */}
                 <img className="home-banner" src={banner} width={"100%"} style={{"height":"150px"}} />
             </div>
-            <div className="content pt-2 pb-2 mt-1 mb-1 text-center">
-                <div><b>Klaim Hadiah Harian</b></div>
-                <div onClick={ handleClick }><img src="/images/icon/gif/gift.gif" style={{"width":"70px"}}/></div>
+            <div className="content pb-1 mt-1 mb-1 text-center">
+                <table style={{"width":"100%"}}>
+                    <tbody>
+                        <tr>
+                            <td style={{"width":"74%"}}>
+                                <div style={{"textAlign":"center"}}><b>Klaim Hadiah Harian</b></div>
+                                <div style={{"textAlign":"right"}}>
+                                    <small>Tonton video singkat untuk mendapatkan hadiah.</small>
+                                </div>
+                            </td>
+                            <td style={{"width":"30%","textAlign":"left"}} onClick={ handleClick }><img src="/images/icon/gif/gift.gif" style={{"width":"70px"}}/></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </>
     );
