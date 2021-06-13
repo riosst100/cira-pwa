@@ -23,7 +23,7 @@ export default function Menu() {
         <Layout title="Cira App">
             {!user ? (
                 <>
-                    <div>
+                    <div className="mt-1">
                             <Link href="/help">
                                 <a className="p-3 block" style={{"backgroundColor":"white","color":"#27173E",
                                 "cursor": "pointer"}}>
@@ -38,7 +38,20 @@ export default function Menu() {
                 </>
             ) : (
               <>
-                <div style={{ "marginTop": "5px" }}>
+                <div className="mt-1 mb-1 content p-2">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><img src="https://static.wixstatic.com/media/51edce_e5e2b360b93b428484819d7e756b2365~mv2.gif" style={{"width": "80px"}} /></td>
+                                <td><b>Beralih Jadi Partner</b>
+                    <div style={{"fontSize":"12px"}}>Kamu bisa membuat toko online, jasa travel dan lainnya.</div>
+                    <div className="mt-2"><Link href="/partner/register"><button className="btn bg-primary">Daftar Jadi Partner</button></Link></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <div className="mt-1">
                     <div className="section" style={
                         {
                             "color":"#27173E",

@@ -18,7 +18,7 @@ export default function Feed() {
 
   return (
       <Layout title="Informasi" hideFooter="true" backgroundColor="#bcbfc4">
-          <div style={{"backgroundColor": "white", "textAlign":"center"}} className="p-2 mb-1">
+          <div style={{"backgroundColor": "white", "textAlign":"center"}} className="p-2 mb-1 mt-1">
             <Link href="/feed/create">
               <a>
                 <button className="mr-5 bg-primary hover:bg-green-700 text-white font-bold py-1 px-5 rounded focus:outline-none focus:shadow-outline">
