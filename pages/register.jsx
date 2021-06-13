@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@/components/layoutSub'
-import Router from 'next/router';
 import { useCurrentUser } from '@/hooks/index';
 import Link from 'next/link'
 import NProgress from '@/components/nprogress';
-import { logoBlueTrans } from '@/lib/core-data';
 import { isAndroid } from '@/lib/helpers';
 
 export default function SignupPage() {
@@ -51,92 +49,92 @@ export default function SignupPage() {
 
   return (
     <Layout title="Daftar Jadi Member">
-    <div className="flex items-center justify-center">
-    <form onSubmit={handleSubmit} className="w-full bg-white shadow-md rounded p-3 m-2">
-        <div>{errorMsg ? <p style={{ color: 'red' }}>{errorMsg}</p> : null}</div>
-        <div className="mb-2" style={
-          {
-            "fontWeight":"bold",
-            "fontSize":"20px",
-            "color": "#369bff"
-          }
-        }>Data Diri</div>
-        <hr></hr>
-        <div className="mb-4 mt-2">
+      <div className="flex items-center justify-center">
+        <form onSubmit={handleSubmit} className="w-full bg-white p-2 mt-1 mb-1">
+          <div>{errorMsg ? <p style={{ color: 'red' }}>{errorMsg}</p> : null}</div>
+          <div className="mb-2" style={
+            {
+              "fontWeight":"bold",
+              "fontSize":"20px",
+              "color": "#369bff"
+            }
+          }>Data Diri</div>
+          <hr />
+          <div className="mb-4 mt-2">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Nama Lengkap
             </label>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="full_name" id="full_name" type="text" required/>
-        </div>
-        <div className="mb-4">
+          </div>
+          <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Nama Panggilan
             </label>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="call_name" id="call_name" type="text" required/>
-        </div>
-        <div className="mb-4">
+          </div>
+          <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Tanggal Lahir
             </label>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="birthdate" id="birthdate" type="date" placeholder="Ingresa tu Fecha de Nacimiento" required/>
-        </div>
-        <div className="mb-2 mt-5" style={
-          {
-            "fontWeight":"bold",
-            "fontSize":"20px",
-            "color": "#369bff"
-          }
-        }>Alamat</div>
-        <hr></hr>
-        <div className="mb-4 mt-2">
+          </div>
+          <div className="mb-2 mt-5" style={
+            {
+              "fontWeight":"bold",
+              "fontSize":"20px",
+              "color": "#369bff"
+            }
+          }>Alamat</div>
+          <hr />
+          <div className="mb-4 mt-2">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Kecamatan
             </label>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="kecamatan" id="kecamatan" type="text" placeholder="Cth. Banjarharjo" required/>
-        </div>
-        <div className="mb-4">
+          </div>
+          <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Desa
             </label>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="desa" id="desa" type="text" placeholder="Cth. Tiwulandu" required/>
-        </div>
-        <div className="mb-2 mt-5" style={
-          {
-            "fontWeight":"bold",
-            "fontSize":"20px",
-            "color": "#369bff"
-          }
-        }>Data Akun</div>
-        <hr></hr>
-        <div className="mb-4 mt-2">
+          </div>
+          <div className="mb-2 mt-5" style={
+            {
+              "fontWeight":"bold",
+              "fontSize":"20px",
+              "color": "#369bff"
+            }
+          }>Data Akun</div>
+          <hr />
+          <div className="mb-4 mt-2">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Nomor HP
             </label>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="phone" id="phone" type="number" placeholder="Cth. 087812345678" required/>
-        </div>
-        <div className="mb-4">
+          </div>
+          <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
                 Password
             </label>
             <div>Tentukan password untuk akun member kamu.</div>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="password" id="password" type="password" required/>
-        </div>
-        <hr></hr>
-        <div className="mt-4" style={{"textAlign":"center"}}>
+          </div>
+          <hr />
+          <div className="mt-4" style={{"textAlign":"center"}}>
             <button id="submit"
                 className="bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit">

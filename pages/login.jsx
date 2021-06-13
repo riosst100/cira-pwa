@@ -46,8 +46,8 @@ const LoginPage = () => {
 
   return (
     <Layout title="Login Member">
-    <div className="flex items-center justify-center">
-      <form onSubmit={onSubmit} className="w-full bg-white shadow-md rounded px-5 pt-6 pb-8">
+    <div className="flex items-center justify-center mt-1">
+      <form onSubmit={onSubmit} className="w-full bg-white rounded p-3">
         <div className="text-center"><img className="mx-auto" src={logoBlueTrans} style={{ width: '70px' }} /></div>
         <h1 className="mt-2 block text-gray-700 font-bold mb-2 text-xl text-center">Masuk ke Cira App</h1>
         <br/>
@@ -57,7 +57,7 @@ const LoginPage = () => {
             Nomor HP
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             name="phone" id="phone" type="text" required/>
         </div>
         <div className="mb-4">
@@ -65,7 +65,7 @@ const LoginPage = () => {
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             name="password" id="password" type="password" required/>
         </div>
         <div className="flex items-center justify-between">

@@ -45,7 +45,7 @@ function Category({ item }) {
                 }>
                     <div className="content">
                         <div style={{"padding":"10px 5px 5px"}}>
-                            <img src="https://brebes-social.id/images/logo/cira-blue-transparent.webp" alt="image" className="imaged" style={
+                            <img src="/images/logo/cira-blue-transparent.webp" alt="image" className="imaged" style={
                                 {
                                     "width": "40px",
                                     "position": "absolute"
